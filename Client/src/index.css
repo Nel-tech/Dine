@@ -2,18 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-
-       
-    }
 
     @layer base {
   html {
     font-family: "Poppins", sans-serif;
   }
- .LogoFont {
+ /* .LogoFont {
     font-family: "Rubik Doodle Triangles", system-ui;
-  }
+  } */
 
 
   .container{
