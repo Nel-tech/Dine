@@ -6,6 +6,9 @@ export default {
       backgroundSize:{
         custom:'20rem'
       },
+       backgroundImage: {
+        'hero-section': "url('/Assests/HeroBackground1.png')",
+      },
     },
   },
   plugins: [],
