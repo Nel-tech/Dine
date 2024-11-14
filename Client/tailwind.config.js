@@ -9,6 +9,7 @@ export default {
        backgroundImage: {
         'hero-section': "url('/Assests/HeroBackground1.png')",
       },
+      
     },
   },
   plugins: [],

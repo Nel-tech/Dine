@@ -1,4 +1,4 @@
-
+import Button from "../../../Components/Button"
 type HeroProps = {
   children:React.ReactNode
 }
@@ -17,9 +17,11 @@ function HeroSection({children}:HeroProps) {
       </div>
 
       <div className="flex justify-center self-center content-center">
-        <button className="bg-orange-500 text-white px-[.5rem] py-2 rounded mt-[.5rem] ">
+        {/* <button className="bg-orange-500 text-white px-[.5rem] py-2 rounded mt-[.5rem] ">
           Make Reservation
-        </button>
+        </button> */}
+
+        <Button name="Make Reservation" textColor="text-white" radius='rounded' padding='p-2.5' backgroundColor='bg-orange-500'/>
       </div>
       </main>  
     </section>
