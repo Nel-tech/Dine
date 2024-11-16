@@ -7,7 +7,7 @@ export default {
         custom:'20rem'
       },
        backgroundImage: {
-        'hero-section': "url('/Assests/HeroBackground1.png')",
+        'hero-section': "url('/Assests/image.png')",
       },
       
     },

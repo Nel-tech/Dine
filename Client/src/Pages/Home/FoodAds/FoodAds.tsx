@@ -1,14 +1,15 @@
 import '../../../index.css';
 // import Button from '../../../Components/Button';
+import { FaCheck } from 'react-icons/fa';
 function FoodAds() {
     return (
         <section>
-            <h1 className='text-center mt-[3rem] text-[1.6rem]'>Perfect Place For An Exceptional Expereince</h1>
+            <h1 className='text-center mt-[3rem] text-[1.6rem]'>Perfect Place For An Exceptional Experience</h1>
 
             <main className="flex justify-evenly container mt-[3rem]">
                 
                 <article>
-                    <h2 className="font-bold text-[2rem] max-w-[12rem] mt-[2rem]">Great Food Steak & Great Restaurant</h2>
+                    <h2 className="font-bold text-[2rem] max-w-[12rem] mt-[2rem] text-[#AD343E]">Great Food Steak & Great Restaurant</h2>
                 </article>
     
                 <figure>
@@ -18,7 +19,8 @@ function FoodAds() {
                 <article className='mt-[3rem]'>
                     <ul className="flex justify-center items-center gap-1 pb-[1.4rem]">
                         <li>
-                            <img src="/Assests/Symbol.png" alt="Check symbol for quality" />
+                            {/* <img src="/Assests/Symbol.png" alt="Check symbol for quality" /> */}
+                            <FaCheck className='text-[#AD343E]'/>
                         </li>
                         <li>
                             <p>Quality foods ingredient assurances</p>
@@ -27,7 +29,7 @@ function FoodAds() {
     
                     <ul className="flex items-center gap-1 pb-[1.4rem]">
                         <li>
-                            <img src="/Assests/Symbol.png" alt="Check symbol for awards" />
+                           <FaCheck className='text-[#AD343E]'/>
                         </li>
                         <li>
                             <p>Award-Winning Restaurant</p>
@@ -36,7 +38,7 @@ function FoodAds() {
     
                     <ul className="flex items-center gap-1 pb-[1.4rem]">
                         <li>
-                            <img src="/Assests/Symbol.png" alt="Check symbol for health" />
+                           <FaCheck className='text-[#AD343E]'/>
                         </li>
                         <li>
                             <p>Healthy Food</p>

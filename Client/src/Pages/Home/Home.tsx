@@ -1,6 +1,7 @@
 import Nav from "../../Components/Nav"
-import HeroSection from "../Home/HeroSection/HeroSection"
-import FoodAds from "../Home/FoodAds/FoodAds"
+import HeroSection from "./HeroSection/HeroSection"
+import FoodAds from "./FoodAds/FoodAds"
+import Services from "./Services/Services"
 
 function Home() {
   return (
@@ -13,6 +14,7 @@ function Home() {
             </HeroSection>
 
             <FoodAds/>
+            <Services/>
         </main>
     </section>
   )
