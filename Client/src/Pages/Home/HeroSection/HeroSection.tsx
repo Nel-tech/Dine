@@ -7,7 +7,7 @@ type HeroProps = {
 function HeroSection({ children }: HeroProps) {
   return (
     <section className="relative w-full h-[90vh] bg-hero-section bg-cover bg-center bg-no-repeat">
-      {/* <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-80"></div> */}
+     
      <div>{children}</div>
 
       <main className=" container text-center mx-auto relative z-50  h-full space-y-4  mt-[8rem]">

@@ -2,6 +2,8 @@ import Nav from "../../Components/Nav"
 import HeroSection from "./HeroSection/HeroSection"
 import FoodAds from "./FoodAds/FoodAds"
 import Services from "./Services/Services"
+import WorkFLow from "./WorkFlow/WorkFLow"
+import Footer from "./Footer/BottomFooter"
 
 function Home() {
   return (
@@ -15,6 +17,8 @@ function Home() {
 
             <FoodAds/>
             <Services/>
+            <WorkFLow/>
+            <Footer/>
         </main>
     </section>
   )
