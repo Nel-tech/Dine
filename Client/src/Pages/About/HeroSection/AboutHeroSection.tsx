@@ -1,7 +1,7 @@
 import { FaPhone, FaEnvelope, FaLandmark } from 'react-icons/fa';
 function AboutHeroSection() {
   return (
-    <main className="mt-[5rem] container flex justify-around content-center self-center">
+    <main className=" mt-[5rem] container flex justify-around content-center self-center">
       <section>
         <figure className="relative">
           <img

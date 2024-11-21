@@ -19,7 +19,7 @@ function Footer() {
             <li>DINE</li>
           </ul>
 
-          <ul className="flex gap-[2rem] justify-center items-center mx-auto">
+          <ul className="flex gap-[2rem] justify-center items-center mx-auto self-center content-center">
             <li>Menu</li>
             <div className="w-[.1rem] h-[1.2rem] m-auto bg-[#8c8c8c]"></div>
             <li>About</li>
@@ -42,8 +42,8 @@ function Footer() {
           </ul>
         </main>
 
-        <hr className='mt-[2rem] container border-[.1px]  border-[#565656]' />
-        <p className='text-white text-center mt-[1rem]'>&copy; {year} Dine</p>
+        <hr className='mt-[2rem] container border-[.1px]  border-[#DBDFD0]' />
+        <p className='text-white text-center mt-[1rem]'>&copy; {year} Dine Restaurant</p>
       </section>
     </footer>
   );
