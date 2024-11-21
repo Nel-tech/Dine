@@ -14,12 +14,12 @@ function Footer() {
   return (
     <footer className="mt-[7rem]">
       <section className="bg-[#2b2b2b] w-full h-[30vh] ">
-        <main className="container text-[#8c8c8c] flex justify-between pt-[2rem]">
+        <main className="container text-[#8c8c8c] flex justify-between items-center pt-[2rem]">
           <ul>
             <li>DINE</li>
           </ul>
 
-          <ul className="flex gap-[2rem]">
+          <ul className="flex gap-[2rem] justify-center items-center mx-auto">
             <li>Menu</li>
             <div className="w-[.1rem] h-[1.2rem] m-auto bg-[#8c8c8c]"></div>
             <li>About</li>
