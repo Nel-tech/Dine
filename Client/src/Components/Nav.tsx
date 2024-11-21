@@ -1,13 +1,20 @@
 import '../index.css'
-
+import { Link } from 'react-router-dom';
 function Nav() {
   return (
     <header className='container'>
       <nav className="flex justify-between items-center self-center content-center  relative z-50">
         <h1 className="text-lg font-bold text-black">Dine</h1>
         <ul className="flex space-x-8 ml-[4rem] text-black text-center ">
-          <li><a href="">Home</a></li>
-          <li><a href="">About</a></li>
+
+          <Link to='/'>
+          <li>Home</li>
+          </Link>
+
+          <Link to='/about'>
+          
+          <li>About</li>
+          </Link>
         </ul>
 
         <ul className='flex gap-3'>
