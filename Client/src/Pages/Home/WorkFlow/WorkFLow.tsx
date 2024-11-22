@@ -5,7 +5,7 @@ function WorkFLow() {
     <section className="container flex justify-evenly mx-auto self-center content-center">
         <main className="flex gap-[1.5rem]">
             <figure>
-                <img src='/Assests/chef.png' alt='Picture-of-a-chef' className="w-[23rem]"/>
+                <img src='/Assests/chef.jpg' alt='Picture-of-a-chef' className="w-[23rem] rounded-md"/>
             </figure>
 
              <figure className="pt-[.9rem]">

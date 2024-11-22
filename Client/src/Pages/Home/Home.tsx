@@ -10,11 +10,8 @@ function Home() {
     <section>
 
          <main>
-          <HeroSection>
-           
-            <Nav/>
-            </HeroSection>
-
+            <Nav Link1="Home" Logo="Dine" Link2="About"/>
+          <HeroSection/>
             <FoodAds/>
             <Services/>
             <WorkFLow/>

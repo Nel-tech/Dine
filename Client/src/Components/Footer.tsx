@@ -29,15 +29,15 @@ function Footer() {
 
           <ul className="flex gap-[4rem]">
             <li>
-              <FaXTwitter />
+              <FaXTwitter className='text-[1.6rem]' />
             </li>
 
             <li>
-              <FaLinkedin />
+              <FaLinkedin  className='text-[1.6rem]' />
             </li>
 
             <li>
-              <FaInstagram />
+              <FaInstagram className='text-[1.6rem]' />
             </li>
           </ul>
         </main>
