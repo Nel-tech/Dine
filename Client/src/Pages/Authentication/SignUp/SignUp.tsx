@@ -8,16 +8,30 @@ export default function SignIn() {
   const [passwordConfirm, setConfirmPassword] = useState('');
   const [isSignup] = useState(true);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+ 
+  if (password !== passwordConfirm) {
+    window.alert('Passwords do not match');
+    return; 
+  }
+
+  try {
     if (isSignup) {
+      // Call the signup function with email and password
       await signup(email, password, passwordConfirm);
-    }else if(password !== passwordConfirm){
-      window.alert('password does not match')
-    }else{
-      console.log('error occured')
+      console.log('Signup successful');
+    } else {
+      console.log('Error: Signup mode not enabled');
     }
-  };
+  } catch (error) {
+    console.error('Error occurred:', error);
+    window.alert('An error occurred. Please try again.');
+  }
+};
+
+
 
   return (
     <section>
@@ -56,7 +70,7 @@ export default function SignIn() {
               <input
                 id="password"
                 name="password"
-                type={password}
+               type="password"
                 required
                 autoComplete="current-password"
                 onChange={(e) => setPassword(e.target.value)}
@@ -74,7 +88,7 @@ export default function SignIn() {
               <input
                 id="password"
                 name="password"
-                type={passwordConfirm}
+              type="password"
                 required
                 autoComplete="current-password"
                 onChange={(e) => setConfirmPassword(e.target.value)}

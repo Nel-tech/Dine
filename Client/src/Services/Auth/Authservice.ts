@@ -8,22 +8,23 @@ import {
 import { auth } from '../Auth/config';
 import { FirebaseError } from 'firebase/app';
 
-// Sign up function
+
 export const signup = async (
-  passwordConfirm: string,
   email: string,
-  password: string
+  password: string,
+  passwordConfirm: string
 ): Promise<void> => {
+  
   if (password !== passwordConfirm) {
     throw new Error('Passwords do not match');
   }
+
   try {
     const userCredential = await createUserWithEmailAndPassword(
       auth,
       email,
       password
     );
-
     console.log('User signed up:', userCredential.user);
   } catch (error: unknown) {
     if (error instanceof FirebaseError) {
@@ -33,6 +34,7 @@ export const signup = async (
     }
   }
 };
+
 
 // Sign in function
 export const signin = async (
