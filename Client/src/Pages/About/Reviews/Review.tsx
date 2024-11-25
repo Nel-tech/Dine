@@ -2,11 +2,11 @@
 function Review() {
   return (
     <main className="mt-[5rem]">
-      <h1 className="text-center text-[2rem] font-medium">
-        What Our Customer Say
+      <h1 className="text-center text-[2rem] font-medium sm:text-[1.5rem]">
+        What Our Customer's Say
       </h1>
       <section className="pt-[3rem]">
-        <ul className=" container flex justify-between self-center items-center content-center">
+        <ul className=" container flex justify-between self-center items-center content-center xs:flex-col sm:flex-col sm:gap-[2rem]">
           <li className="bg-[#F9F9F7] w-[20rem] p-[2rem] h-[17rem] rounded-md ">
             <h1 className="text-[#AD343E] font-bold">"The best restaurant"</h1>
             <p className="max-w-[18rem] text-[.8rem] leading-[1.5rem] pt-[1rem]">
@@ -18,7 +18,7 @@ function Review() {
               <img
                 src="../../Assests/Profile1.jpg"
                 alt=""
-                className="w-[50px] h-[50px] rounded-[50px]"
+                className="w-[50px] h-[50px] rounded-full object-cover"
               />
               <p className="text-[.6rem] font-bold">Bello Miracle</p>
             </div>
@@ -36,7 +36,7 @@ function Review() {
               <img
                 src="../../Assests/Profile2.jpg"
                 alt=""
-                className="w-[50px] h-[50px] rounded-[50px]"
+               className="w-[50px] h-[50px] rounded-full object-cover"
               />
                <p className="text-[.6rem] font-bold">Femi Kayode</p>
             </div>
@@ -54,7 +54,7 @@ function Review() {
             <img
               src="../../Assests/Profile3.jpeg"
               alt=""
-              className="w-[50px] h-[50px] rounded-[50px]"
+             className="w-[50px] h-[50px] rounded-full object-cover"
             />
             <p className="text-[.6rem] font-bold">Rachel Frisk</p>
             </div>

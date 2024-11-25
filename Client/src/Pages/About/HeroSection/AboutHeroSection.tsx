@@ -1,17 +1,17 @@
 import { FaPhone, FaEnvelope, FaLandmark } from 'react-icons/fa';
 function AboutHeroSection() {
   return (
-    <main className=" mt-[5rem] container flex justify-around content-center self-center">
+    <main className=" mt-[5rem] container flex justify-around content-center self-center xs:flex-col sm:flex-col ">
       <section>
         <figure className="relative">
           <img
             src="../../../../Assests/HeroBackground.jpg"
-            className="w-[34rem] rounded-lg"
+            className="w-[34rem] rounded-lg  "
             alt=""
           />
 
-          <div className="absolute bottom-[-2rem] right-[-3rem]">
-            <figcaption className="pt-[2rem] pl-[2rem] bg-[#474747] w-[22rem] h-[15rem] rounded-lg">
+          <div className="absolute bottom-[-2rem] right-[-3rem] xs:hidden sm:hidden">
+            <figcaption className="pt-[2rem] pl-[2rem] bg-[#474747] w-[22rem] h-[15rem] rounded-lg sm:w-[15rem]">
               <h1 className='font-bold text-white'>Come and Vist us</h1>
 
               <section className='text-white pt-[1rem]' >
@@ -35,8 +35,8 @@ function AboutHeroSection() {
         </figure>
       </section>
 
-      <section className="mt-[3.7rem]">
-        <h1 className="text-[#AD343E] text-[1.5rem] font-bold">
+      <section className="mt-[3.7rem] sm:mt-[6rem]">
+        <h1 className="text-[#AD343E] text-[1.5rem]  font-bold xs:text-[1.2rem] xs:mx-auto ">
           Where Flavor Meets Convenience
         </h1>
 

@@ -1,7 +1,7 @@
 function Offers() {
   return (
-    <main className=" container flex justify-between content-center self-center mt-[5rem]">
-      <section className="flex justify-center content-center self-center gap-[1rem]">
+    <main className=" container flex justify-between content-center self-center mt-[5rem] xs:flex-col sm:flex-col">
+      <section className="flex justify-center content-center self-center gap-[1rem] xs:pb-[1rem] sm:pb-[1rem]">
         <figure>
           <img src="../../../../Assests/restaurant-menu.svg" className="w-[2rem]" alt="restaurant-menu" />
         </figure>
@@ -12,7 +12,7 @@ function Offers() {
 
       </section>
 
-      <section className="flex justify-center content-center self-center gap-[1rem]">
+      <section className="flex justify-center content-center self-center gap-[1rem]  xs:pb-[1rem] sm:pb-[1rem]">
         <figure>
           <img src="../../../../Assests/Icon.svg" className="w-[2rem]" alt="Reservation-Icon" />
         </figure>
@@ -23,7 +23,7 @@ function Offers() {
 
       </section>
 
-      <section className="flex justify-center content-center self-center gap-[1rem]">
+      <section className="flex justify-center content-center self-center gap-[1rem]  xs:pb-[1rem] sm:pb-[1rem]">
         <figure>
           <img src="../../../../Assests/timer 1.svg"  className="w-[2rem]" alt="Timer" />
         </figure>

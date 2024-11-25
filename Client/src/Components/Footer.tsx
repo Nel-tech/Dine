@@ -1,33 +1,27 @@
-import { useState,useEffect } from 'react';
+// import { useState,useEffect } from 'react';
 import { FaXTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa6';
 
 function Footer() {
 
-  const [year, setYear] = useState(Number)
-  
-  useEffect(()=>{
-  
   const result = new Date().getFullYear()
-  console.log(result)
-  setYear(result)
-  },[])
+  
   return (
     <footer className="mt-[7rem]">
-      <section className="bg-[#2b2b2b] w-full h-[30vh] ">
-        <main className="container text-[#8c8c8c] flex justify-between items-center pt-[2rem]">
-          <ul>
-            <li>DINE</li>
+      <section className="bg-[#2b2b2b] w-full ">
+        <main className="container text-[#8c8c8c] flex justify-between items-center pt-[2rem] xs:flex-col sm:flex-col md:flex-col">
+          <ul className='md:pb-[1.8rem]'>
+            <li className='text-[1.5rem] xs:hidden sm:hidden'>DINE</li>
           </ul>
 
-          <ul className="flex gap-[2rem] justify-center items-center mx-auto self-center content-center">
-            <li>Menu</li>
-            <div className="w-[.1rem] h-[1.2rem] m-auto bg-[#8c8c8c]"></div>
-            <li>About</li>
-            <div className="w-[.1rem] h-[1.2rem] m-auto bg-[#8c8c8c]"></div>
-            <li>Contact</li>
+          <ul className="flex gap-[2rem] justify-center items-center mx-auto self-center content-center xs:flex-col md:pb-[1.8rem]">
+            <li className='text-[1.5rem] xs:hidden sm:hidden'>Menu</li>
+            <div className="w-[.1rem] h-[1.2rem] m-auto bg-[#8c8c8c] xs:hidden sm:hidden"></div>
+            <li className='text-[1.5rem] xs:hidden sm:hidden'>About</li>
+            <div className="w-[.1rem] h-[1.2rem] m-auto bg-[#8c8c8c] xs:hidden sm:hidden"></div>
+            <li className='text-[1.5rem] xs:hidden sm:hidden'>Contact</li>
           </ul>
 
-          <ul className="flex gap-[4rem]">
+          <ul className="flex gap-[4rem] xs:pb-[2rem] sm:pb-[2.2rem]">
             <li>
               <FaXTwitter className='text-[1.6rem]' />
             </li>
@@ -42,8 +36,8 @@ function Footer() {
           </ul>
         </main>
 
-        <hr className='mt-[2rem] container border-[.1px]  border-[#DBDFD0]' />
-        <p className='text-white text-center mt-[1rem]'>&copy; {year} Dine Restaurant</p>
+        <hr className='mt-[2rem] container border-[.1px]  border-[#DBDFD0] xs:hidden sm:hidden ' />
+        <p className='text-white text-center mt-[1rem]'>&copy; {result} Dine Restaurant</p>
       </section>
     </footer>
   );
