@@ -8,7 +8,7 @@ function HeroSection() {
       <h1 className="mx-auto max-w-[28rem] pb-[1.2rem] text-center text-[2.4rem] text-black xs:pb-[.3rem] xs:text-white xs:text-[1.2rem] sm:text-[1.5rem] sm:text-white">
         Welcome to Dine <span>Where Taste Meets Art</span>
       </h1>
-      <p className="text-center text-lg text-black xs:text-white xs:text-[1rem]  sm:text-white ">
+      <p className="text-center text-lg text-black xs:text-white xs:text-[.8rem]  sm:text-white sm:text-[1rem] ">
         We don’t just cook, we stir your soul!
       </p>
     </div>

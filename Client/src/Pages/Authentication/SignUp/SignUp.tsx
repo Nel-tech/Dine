@@ -1,13 +1,14 @@
 import { useState } from 'react';
 // import Nav from '../../../Components/Nav';
 import { signup } from '../../../Services/Auth/Authservice';
+import { useNavigate } from "react-router-dom";
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setConfirmPassword] = useState('');
   const [isSignup] = useState(true);
-
+const Navigate = useNavigate()
  const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
 
@@ -19,9 +20,9 @@ export default function SignIn() {
 
   try {
     if (isSignup) {
-      // Call the signup function with email and password
+     
       await signup(email, password, passwordConfirm);
-      console.log('Signup successful');
+     Navigate('/menu')
     } else {
       console.log('Error: Signup mode not enabled');
     }

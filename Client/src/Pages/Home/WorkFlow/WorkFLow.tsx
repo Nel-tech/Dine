@@ -2,7 +2,7 @@
 import { FaUtensils, FaCartArrowDown,FaWineGlassAlt, FaClock } from "react-icons/fa";
 function WorkFLow() {
   return (
-    <section className="container flex justify-between mx-auto self-center content-center lg:gap-[2rem] xs:flex-col sm:flex-col md:flex-col">
+    <section className="container flex justify-evenly mx-auto self-center content-center lg:gap-[2rem] xs:flex-col sm:flex-col md:flex-col">
         <main className="flex gap-[1.5rem] xs:flex-col">
             <figure>
                 <img src='/Assests/chef.jpg' alt='Picture-of-a-chef' className="w-[23rem] rounded-md xs:w-[15rem] xs:mx-auto"/>
@@ -20,7 +20,7 @@ function WorkFLow() {
   <article>
     
     
-    <aside className="flex items-start gap-1 pb-[2rem]  xs:gap-3 sm:gap-2 lg:gap-2">
+    <aside className="flex items-start gap-3 pb-[2rem]  xs:gap-3 sm:gap-2 lg:gap-2">
       <FaUtensils className="text-[#AD343E] text-[1.5rem] mt-1" />
       <div>
         <h4 className="font-bold text-lg text-gray-800 xs:text-sm sm:text-sm sm:pb[.6rem]  lg:text-[1rem]">Exceptional Dining Experience</h4>
@@ -29,7 +29,7 @@ function WorkFLow() {
     </aside>
 
     
-    <aside className="flex items-start pb-[2rem]  xs:gap-3  sm:gap-2">
+    <aside className="flex items-start pb-[2rem] gap-3  xs:gap-3  sm:gap-2">
       <FaCartArrowDown className="text-[#AD343E] text-[1.5rem] mt-1  " />
       <div>
         <h4 className="font-bold text-lg text-gray-800 xs:text-sm sm:text-sm sm:pb[.6rem]">Pre-Order and Reserve with Ease</h4>
@@ -38,7 +38,7 @@ function WorkFLow() {
     </aside>
 
     
-    <aside className="flex items-start pb-[2rem] xs:gap-3 sm:gap-2">
+    <aside className="flex items-start pb-[2rem] gap-3 xs:gap-3 sm:gap-2">
       <FaWineGlassAlt className="text-[#AD343E] text-[1.5rem] mt-1" />
       <div>
         <h4 className="font-bold text-lg text-gray-800 xs:text-sm  sm:text-sm sm:pb[.6rem]">Crafted to Perfection</h4>
@@ -47,7 +47,7 @@ function WorkFLow() {
     </aside>
 
     
-    <aside className="flex items-start pb-[2rem] xs:gap-3  sm:gap-2">
+    <aside className="flex items-start pb-[2rem] gap-3 xs:gap-3  sm:gap-2">
       <FaClock className="text-[#AD343E] text-[1.5rem] mt-1" />
       <div>
         <h4 className="font-bold text-lg text-gray-800  xs:text-sm  sm:text-sm sm:pb[.6rem]">Fast, Reliable Reservations</h4>

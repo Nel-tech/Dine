@@ -11,8 +11,7 @@ export const config = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
-console.log(import.meta.env.VITE_FIREBASE_API_KEY);
-console.log(import.meta.env.VITE_FIREBASE_AUTH_DOMAIN);
+
 const app = initializeApp(config);
 
 export const auth = getAuth(app);

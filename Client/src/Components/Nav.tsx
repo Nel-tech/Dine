@@ -2,6 +2,7 @@ import '../index.css';
 import Button from './Button';
 import { FaBars } from 'react-icons/fa';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 type NavType = {
   Logo: string;
   Link1: string;
@@ -18,35 +19,30 @@ function Nav({ Logo, Link1, Link2 }: NavType) {
           <h1 className="text-2xl font-extrabold text-[#AD343E]">{Logo}</h1>
         </a>
 
-        <FaBars className='' onClick={() => setisOpen(!isOpen)} />
+        <FaBars className="" onClick={() => setisOpen(!isOpen)} />
 
         <section
           className={`xs:${isOpen ? 'block' : 'hidden'} sm:${
             isOpen ? 'block' : 'hidden'
-          } flex flex-1 items-center justify-between xs:absolute xs:right-0 xs:top-full xs:h-[50vh] xs:w-full xs:flex-col xs:bg-white xs:pb-[2rem] xs:shadow-lg xs:mx-auto sm:absolute sm:right-0 sm:top-full sm:h-[50vh] sm:w-full sm:flex-col sm:bg-white sm:pb-[2rem] sm:shadow-lg md:flex`}
+          } flex flex-1 items-center justify-between xs:absolute xs:right-0 xs:top-full xs:mx-auto xs:h-[60vh] xs:w-full xs:flex-col xs:bg-white xs:pb-[2rem] xs:shadow-lg sm:absolute sm:right-0 sm:top-full sm:h-[70vh] sm:w-full sm:flex-col sm:bg-white sm:pb-[2rem] sm:shadow-lg md:flex`}
         >
           <ul className="flex flex-1 justify-center gap-8 text-[1rem] font-medium text-black xs:flex-col sm:flex-col">
-            <li>
-              <a
-                href="/"
-                className="transition-colors duration-300 hover:text-[#AD343E]"
-              >
+            <Link to="/">
+              <li className="transition-colors duration-300 hover:text-[#AD343E]">
                 {Link1}
-              </a>
-            </li>
-            <li>
-              <a
-                href="/about"
-                className="transition-colors duration-300 hover:text-[#AD343E]"
-              >
+              </li>
+            </Link>
+
+            <Link to='/about'>
+              <li className="transition-colors duration-300 hover:text-[#AD343E]">
                 {Link2}
-              </a>
-            </li>
+              </li>
+            </Link>
           </ul>
 
           {/* Buttons */}
           <div className="flex gap-4 xs:flex-col sm:flex-col">
-            <a href="/signin">
+            <Link to="/signin">
               <Button
                 name="Login in"
                 backgroundColor="bg-[#AD343E]"
@@ -55,8 +51,9 @@ function Nav({ Logo, Link1, Link2 }: NavType) {
                 index=""
                 radius="rounded-full"
               />
-            </a>
-            <a href="/signup">
+            </Link>
+
+            <Link to="/signup">
               <Button
                 name="Sign Up"
                 backgroundColor="bg-[#AD343E]"
@@ -65,7 +62,7 @@ function Nav({ Logo, Link1, Link2 }: NavType) {
                 index=""
                 radius="rounded-full"
               />
-            </a>
+            </Link>
           </div>
         </section>
       </nav>
