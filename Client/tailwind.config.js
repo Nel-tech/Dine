@@ -8,8 +8,8 @@ export default {
       },
       backgroundImage: {
         'hero-section': "url('/Assests/image.png')",
-        'about-section': "url('./Assests/AboutBackground1.png')",
-        'Mobile-Hero-section': "url('./Assests/MobileBackground.png')",
+        'about-section': "url('/Assests/AboutBackground1.png')",
+        'Mobile-Hero-section': "url('/Assests/MobileBackground.png')",
       },
     },
 
