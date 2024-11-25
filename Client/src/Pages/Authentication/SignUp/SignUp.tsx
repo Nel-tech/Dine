@@ -1,16 +1,36 @@
-import Nav from '../../../Components/Nav';
+import { useState } from 'react';
+// import Nav from '../../../Components/Nav';
+import {Signup} from '../../../Firebase/Auth/authService.js'
+
 export default function SignIn() {
+
+ 
+    const [email, setEmail] = useState('')
+    const [password, sePassword] = useState('')
+    const [isSignup, setIsSignup] = useState(true)
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+    if(isSignup){
+      await Signup(email,password)
+    }else{
+      console.log('error occured')
+    }
+    }
+   
+  }
   return (
+
     <section>
-      <Nav Link1='' Link2='' Logo='Dine' />
+      {/* <Nav Link1='' Link2='' Logo='Dine' /> */}
       <div className="flex min-h-screen flex-col justify-center items-center px-4 py-8">
         <div className="w-full max-w-sm">
           <h2 className="text-center text-2xl font-bold text-gray-800 mb-8">
             Create an account
           </h2>
 
-          <form>
-            <div className="mb-6">
+          <form onSubmit={handleSubmit}>
+            {/* <div className="mb-6">
               <label className="block text-sm font-medium text-gray-800 mb-1">
                 Name
               </label>
@@ -22,7 +42,7 @@ export default function SignIn() {
                 autoComplete="name"
                 className="block w-full rounded border border-gray-300 px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
               />
-            </div>
+            </div> */}
 
             <div className="mb-6">
               <label className="block text-sm font-medium text-gray-800 mb-1">
@@ -55,7 +75,7 @@ export default function SignIn() {
               />
             </div>
 
-            <div className="mb-6">
+            {/* <div className="mb-6">
               <label
                 htmlFor="password"
                 className="block text-sm font-medium text-gray-800 mb-1"
@@ -70,7 +90,7 @@ export default function SignIn() {
                 autoComplete="current-password"
                 className="block w-full rounded border border-gray-300 px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
               />
-            </div>
+            </div> */}
 
             <button
               type="submit"
