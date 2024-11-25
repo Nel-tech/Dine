@@ -1,96 +1,88 @@
 import { useState } from 'react';
 // import Nav from '../../../Components/Nav';
-import {Signup} from '../../../Firebase/Auth/authService.js'
+import { signup } from '../../../Services/Auth/Authservice';
 
 export default function SignIn() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordConfirm, setConfirmPassword] = useState('');
+  const [isSignup] = useState(true);
 
- 
-    const [email, setEmail] = useState('')
-    const [password, sePassword] = useState('')
-    const [isSignup, setIsSignup] = useState(true)
-
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-    if(isSignup){
-      await Signup(email,password)
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isSignup) {
+      await signup(email, password, passwordConfirm);
+    }else if(password !== passwordConfirm){
+      window.alert('password does not match')
     }else{
       console.log('error occured')
     }
-    }
-   
-  }
-  return (
+  };
 
+  return (
     <section>
       {/* <Nav Link1='' Link2='' Logo='Dine' /> */}
-      <div className="flex min-h-screen flex-col justify-center items-center px-4 py-8">
+      <div className="flex min-h-screen flex-col items-center justify-center px-4 py-8">
         <div className="w-full max-w-sm">
-          <h2 className="text-center text-2xl font-bold text-gray-800 mb-8">
+          <h2 className="mb-8 text-center text-2xl font-bold text-gray-800">
             Create an account
           </h2>
 
           <form onSubmit={handleSubmit}>
-            {/* <div className="mb-6">
-              <label className="block text-sm font-medium text-gray-800 mb-1">
-                Name
-              </label>
-              <input
-                id="name"
-                name="name"
-                type="name"
-                required
-                autoComplete="name"
-                className="block w-full rounded border border-gray-300 px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-              />
-            </div> */}
+            
 
             <div className="mb-6">
-              <label className="block text-sm font-medium text-gray-800 mb-1">
+              <label className="mb-1 block text-sm font-medium text-gray-800">
                 Email address
               </label>
               <input
                 id="email"
                 name="email"
-                type="email"
+                type={email}
                 required
                 autoComplete="email"
-                className="block w-full rounded border border-gray-300 px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                onChange={(e) => setEmail(e.target.value)}
+                className="block w-full rounded border border-gray-300 px-3 py-2 text-gray-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
 
             <div className="mb-6">
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-gray-800 mb-1"
+                className="mb-1 block text-sm font-medium text-gray-800"
               >
                 Password
               </label>
               <input
                 id="password"
                 name="password"
-                type="password"
+                type={password}
                 required
                 autoComplete="current-password"
-                className="block w-full rounded border border-gray-300 px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                onChange={(e) => setPassword(e.target.value)}
+                className="block w-full rounded border border-gray-300 px-3 py-2 text-gray-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
 
-            {/* <div className="mb-6">
+            <div className="mb-6">
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-gray-800 mb-1"
+                className="mb-1 block text-sm font-medium text-gray-800"
               >
                 Confirm Password
               </label>
               <input
                 id="password"
                 name="password"
-                type="password"
+                type={passwordConfirm}
                 required
                 autoComplete="current-password"
-                className="block w-full rounded border border-gray-300 px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className="block w-full rounded border border-gray-300 px-3 py-2 text-gray-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
-            </div> */}
+            </div>
+
+            <a href="/menu">
 
             <button
               type="submit"
@@ -98,6 +90,7 @@ export default function SignIn() {
             >
               Create
             </button>
+            </a>
           </form>
         </div>
       </div>
