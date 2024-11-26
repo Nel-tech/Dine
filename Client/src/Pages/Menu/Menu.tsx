@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { MenuData } from '../../Helpers/Data';
+import NavForm from "../../Components/NavForm"
 
 function Menu() {
   const [Category, setCategory] = useState('');
@@ -9,13 +10,16 @@ function Menu() {
     : MenuData;
 
   return (
-    <main className="container flex flex-col items-center mt-[6rem]">
-      <div className="flex flex-wrap gap-4 mb-8">
+    <div>
+          <NavForm/>
+
+    <main className="container flex flex-col items-center mt-[6rem] ">
+      <div className="flex flex-wrap gap-4 mb-8 overflow-x-auto whitespace-nowrap scrollbar-hide px-4 xs:overflow-x-auto xs:whitespace-nowrap xs:hide">
         <button
           onClick={() => setCategory('')}
           className={`border-2 rounded-full px-6 py-2 text-[#AD343E] border-[#AD343E] hover:bg-[#AD343E] hover:text-white transition-all duration-300 ease-in-out ${
             Category === '' ? 'bg-[#AD343E] text-white' : ''
-          }`}
+          } `}
         >
           All
         </button>
@@ -33,14 +37,14 @@ function Menu() {
         ))}
       </div>
 
-      <div className="flex flex-wrap justify-between gap-4 m-[2rem]">
+      <div className="flex flex-wrap justify-between gap-4 m-[2rem] ">
         {filteredMenu.map((menu) => (
           <section key={menu.id} className="w-full">
-            <div className="flex flex-wrap justify-between gap-4">
+            <div className="flex flex-wrap justify-between gap-4 xs:flex-col sm:flex-col">
               {menu.Dishes.map((dish) => (
                 <div
                   key={dish.Name}
-                  className="w-[30%] p-4 border rounded-lg shadow-md flex flex-col items-center"
+                  className="w-[30%] p-4 border rounded-lg shadow-md flex flex-col items-center xs:w-[100%]  sm:w-[100%]"
                 >
                   <img
                     src={dish.Picture}
@@ -79,6 +83,7 @@ function Menu() {
         ))}
       </div>
     </main>
+    </div>
   );
 }
 

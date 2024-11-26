@@ -15,7 +15,7 @@ function HeroSection() {
 
     <div className="pt-[1rem]">
       <Button
-        name="Make Reservation"
+        name="Explore Menu"
         textColor="text-white"
         radius="rounded-full"
         padding="px-8 py-3"

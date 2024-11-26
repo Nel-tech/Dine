@@ -10,7 +10,7 @@ function Home() {
     <section>
 
          <main>
-            <Nav Link1="Home" Logo="Dine" Link2="About"/>
+            <Nav/>
           <HeroSection/>
             <FoodAds/>
             <Services/>

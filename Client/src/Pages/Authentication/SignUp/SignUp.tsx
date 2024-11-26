@@ -1,5 +1,5 @@
 import { useState } from 'react';
-// import Nav from '../../../Components/Nav';
+import NavForm from '../../../Components/NavForm';
 import { signup } from '../../../Services/Auth/Authservice';
 import { useNavigate } from "react-router-dom";
 
@@ -8,35 +8,40 @@ export default function SignIn() {
   const [password, setPassword] = useState('');
   const [passwordConfirm, setConfirmPassword] = useState('');
   const [isSignup] = useState(true);
+
+
 const Navigate = useNavigate()
- const handleSubmit = async (e: React.FormEvent) => {
+const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
 
- 
   if (password !== passwordConfirm) {
     window.alert('Passwords do not match');
-    return; 
+    return;
   }
 
   try {
-    if (isSignup) {
-     
+    if (isSignup) {      
       await signup(email, password, passwordConfirm);
-     Navigate('/menu')
+      window.alert('Account successfully created');
+      Navigate('/menu');
     } else {
-      console.log('Error: Signup mode not enabled');
+   
+      await signup(passwordConfirm, email, password);
+      window.alert('Successfully signed in');
+     Navigate('/menu');
     }
   } catch (error) {
     console.error('Error occurred:', error);
-    window.alert('An error occurred. Please try again.');
+    window.alert(error instanceof Error ? error.message : "An error occurred. Please try again.");
   }
 };
 
 
 
+
   return (
     <section>
-      {/* <Nav Link1='' Link2='' Logo='Dine' /> */}
+      <NavForm />
       <div className="flex min-h-screen flex-col items-center justify-center px-4 py-8">
         <div className="w-full max-w-sm">
           <h2 className="mb-8 text-center text-2xl font-bold text-gray-800">
@@ -97,7 +102,7 @@ const Navigate = useNavigate()
               />
             </div>
 
-            <a href="/menu">
+            
 
             <button
               type="submit"
@@ -105,8 +110,17 @@ const Navigate = useNavigate()
             >
               Create
             </button>
-            </a>
+
+    
+           
           </form>
+
+          <p className="mt-6 text-center text-sm text-gray-600">
+            Already have an account?{' '}
+            <a href="/signin" className="text-[#AD343E] hover:text-indigo-500">
+              Log In
+            </a>
+          </p>
         </div>
       </div>
     </section>

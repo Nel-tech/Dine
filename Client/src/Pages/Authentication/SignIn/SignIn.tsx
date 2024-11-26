@@ -1,20 +1,41 @@
-import Nav from "../../../Components/Nav";
-
+import NavForm from '../../../Components/NavForm';
+import { signin } from '../../../Services/Auth/Authservice.ts';
+import { useState } from 'react';
 export default function SignIn() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const [isLogin] = useState(true);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      if (isLogin) {
+        await signin(email, password);
+      }
+    } catch (error) {
+      console.error('Error occurred:', error);
+      window.alert(
+        error instanceof Error
+          ? error.message
+          : 'An error occurred. Please try again.'
+      );
+    }
+  };
   return (
-    
     <section>
-    <Nav Link1="" Link2="" Logo="Dine"/>
-   
-      <div className="flex min-h-screen flex-col justify-center items-center px-4 py-8">
+      <NavForm />
+
+      <div className="flex min-h-screen flex-col items-center justify-center px-4 py-8">
         <div className="w-full max-w-sm">
-          <h2 className="text-center text-2xl font-bold text-gray-800 mb-8">
+          <h2 className="mb-8 text-center text-2xl font-bold text-gray-800">
             Sign in to your account
           </h2>
 
-          <form >
+          <form onSubmit={handleSubmit}>
             <div className="mb-6">
-              <label className="block text-sm font-medium text-gray-800 mb-1">
+              <label className="mb-1 block text-sm font-medium text-gray-800">
                 Email address
               </label>
               <input
@@ -22,13 +43,17 @@ export default function SignIn() {
                 name="email"
                 type="email"
                 required
+                onChange={(e)=> setEmail(e.target.value)}
                 autoComplete="email"
-                className="block w-full rounded border border-gray-300 px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="block w-full rounded border border-gray-300 px-3 py-2 text-gray-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
 
             <div className="mb-6">
-              <label htmlFor="password" className="block text-sm font-medium text-gray-800 mb-1">
+              <label
+                htmlFor="password"
+                className="mb-1 block text-sm font-medium text-gray-800"
+              >
                 Password
               </label>
               <input
@@ -37,10 +62,14 @@ export default function SignIn() {
                 type="password"
                 required
                 autoComplete="current-password"
-                className="block w-full rounded border border-gray-300 px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                 onChange={(e)=> setPassword(e.target.value)}
+                className="block w-full rounded border border-gray-300 px-3 py-2 text-gray-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
               <div className="mt-2 text-right">
-                <a href="#" className="text-sm text-[#AD343E] hover:text-indigo-500">
+                <a
+                  href="#"
+                  className="text-sm text-[#AD343E] hover:text-indigo-500"
+                >
                   Forgot password?
                 </a>
               </div>
@@ -57,12 +86,11 @@ export default function SignIn() {
           <p className="mt-6 text-center text-sm text-gray-600">
             Don't have an account?{' '}
             <a href="/signup" className="text-[#AD343E] hover:text-indigo-500">
-             Create One
+              Create One
             </a>
           </p>
         </div>
       </div>
     </section>
-   
   );
 }
