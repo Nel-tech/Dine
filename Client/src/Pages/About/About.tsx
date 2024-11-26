@@ -10,7 +10,7 @@ import Footer from "../../Components/Footer"
 function About() {
   return (
     <div>
-        <Nav Link1="Home" Link2="About" Logo="Dine"/>
+        <Nav/>
         <AboutHeroSection/>
         <AboutAds/>
         <Offers/>
