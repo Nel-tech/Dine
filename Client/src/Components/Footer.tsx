@@ -14,11 +14,11 @@ function Footer() {
           </ul>
 
           <ul className="flex gap-[2rem] justify-center items-center mx-auto self-center content-center xs:flex-col md:pb-[1.8rem]">
-            <li className='text-[1.5rem] xs:hidden sm:hidden'>Menu</li>
-            <div className="w-[.1rem] h-[1.2rem] m-auto bg-[#8c8c8c] xs:hidden sm:hidden"></div>
+            <li className='text-[1.5rem] xs:hidden sm:hidden'>Home</li>
+          
             <li className='text-[1.5rem] xs:hidden sm:hidden'>About</li>
-            <div className="w-[.1rem] h-[1.2rem] m-auto bg-[#8c8c8c] xs:hidden sm:hidden"></div>
-            <li className='text-[1.5rem] xs:hidden sm:hidden'>Contact</li>
+
+            
           </ul>
 
           <ul className="flex gap-[4rem] xs:pb-[2rem] sm:pb-[2.2rem]">

@@ -1,11 +1,13 @@
 import { useState } from 'react';
+import NavForm from '../../Components/NavForm';
 import Footer from '../../Components/Footer';
 
 function Reservation() {
   const [count, setCount] = useState(0);
   return (
     <main>
-      <section className=" w-full h-[100vh]   mx-auto  px-4 py-8 ">
+      <NavForm/>
+      <section className=" w-full h-[100vh]   mx-auto  px-4 py-[5rem] ">
         <h1 className="text-[#AD343E] text-[2rem] mx-auto text-center">
           Book A Table
         </h1>

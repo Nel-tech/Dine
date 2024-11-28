@@ -34,48 +34,27 @@ export const MenuData = [
     Dishes: [
       {
         Name: 'Jollof Rice',
-        BasePrice: '#3000',
-        AddOns: [
-          { Name: 'Chicken', Price: '#1000' },
-          { Name: 'Fish', Price: '#1200' },
-          { Name: 'Beef', Price: '#800' },
-        ],
+        BasePrice: 3000,
         Picture: '/Assests/FoodImages/JollofRice.jpg',
       },
       {
         Name: 'Fried Rice',
-        BasePrice: '#3500',
-        AddOns: [
-          { Name: 'Chicken', Price: '#1000' },
-          { Name: 'Shrimp', Price: '#1500' },
-        ],
+        BasePrice: 3500,
         Picture: '/Assests/FoodImages/FriedRice.jpg',
       },
       {
         Name: 'Ofada Rice',
-        BasePrice: '#3000',
-        AddOns: [
-          { Name: 'Chicken', Price: '#1000' },
-          { Name: 'Shrimp', Price: '#1500' },
-          { Name: 'Beef', Price: '#800' },
-        ],
+        BasePrice: 3000,
         Picture: '/Assests/FoodImages/Ofada Rice.jpg',
       },
-
       {
         Name: 'Beans and Plantain',
-        BasePrice: '#3500',
-        AddOns: [],
+        BasePrice: 3500,
         Picture: '/Assests/FoodImages/BeansAndPlaintain.jpeg',
       },
       {
         Name: 'Yam Porridge',
-        BasePrice: '#2000',
-        AddOns: [
-          { Name: 'Chicken', Price: '#1000' },
-          { Name: 'Shrimp', Price: '#1500' },
-          { Name: 'Beef', Price: '#800' },
-        ],
+        BasePrice: 2000,
         Picture: '/Assests/FoodImages/YamPorradge.jpeg',
       },
     ],
@@ -86,32 +65,27 @@ export const MenuData = [
     Dishes: [
       {
         Name: 'Puff-Puff',
-        BasePrice: '#500',
-        AddOns: [],
+        BasePrice: 500,
         Picture: '/Assests/FoodImages/PuffPuff.jpg',
       },
       {
         Name: 'Boli (Roasted Plantain)',
-        BasePrice: '#1500',
-        AddOns: [],
+        BasePrice: 1500,
         Picture: '/Assests/FoodImages/RoastedPlaintain.jpg',
       },
       {
         Name: 'Meat Pie',
-        BasePrice: '#2000',
-        AddOns: [],
+        BasePrice: 2000,
         Picture: '/Assests/FoodImages/Meatpie.jpg',
       },
       {
         Name: 'Scotch Egg',
-        BasePrice: '#2000',
-        AddOns: [],
+        BasePrice: 2000,
         Picture: '/Assests/FoodImages/Scotch Egg.jpg',
       },
       {
         Name: 'Sausage',
-        BasePrice: '#800',
-        AddOns: [],
+        BasePrice: 800,
         Picture: '/Assests/FoodImages/Sausage.jpeg',
       },
     ],
@@ -122,28 +96,23 @@ export const MenuData = [
     Dishes: [
       {
         Name: 'Pepper Soup',
-        BasePrice: '#3000',
-        AddOns: [],
+        BasePrice: 3000,
         Picture: '/Assests/FoodImages/PepperSoup.jpg',
       },
       {
         Name: 'Crab Pepper Soup',
-        BasePrice: '#2700',
-        AddOns: [],
+        BasePrice: 2700,
         Picture: '/Assests/FoodImages/CrabPepper.jpg',
       },
       {
         Name: 'Stockfish Stew',
-        BasePrice: '#2000',
-        AddOns: [],
+        BasePrice: 2000,
         Picture: '/Assests/FoodImages/StockFishStew.jpeg',
       },
-
       {
         Name: 'Prawns Stir Fry',
-        BasePrice: '#3000',
-        AddOns: [],
-        Picture: '',
+        BasePrice: 3000,
+        Picture: '', // Add a picture URL
       },
     ],
   },
@@ -153,107 +122,161 @@ export const MenuData = [
     Dishes: [
       {
         Name: 'Zobo',
-        BasePrice: '#500',
-        AddOns: [],
+        BasePrice: 500,
         Picture: '/Assests/FoodImages/Zobo.jpg',
       },
       {
         Name: 'Tiger Nut',
-        BasePrice: '#500',
-        AddOns: [],
+        BasePrice: 500,
         Picture: '/Assests/FoodImages/Tigernut.jpeg',
       },
       {
         Name: 'Palm Wine',
-        BasePrice: '#1000',
-        AddOns: [],
+        BasePrice: 1000,
         Picture: '/Assests/FoodImages/Palm Wine.jpg',
       },
       {
         Name: 'Kunu',
-        BasePrice: '#500',
-        AddOns: [],
+        BasePrice: 500,
         Picture: '/Assests/FoodImages/Kunus.jpeg',
+      },
+    ],
+  },
+  {
+    id: 5,
+    Category: 'Soups',
+    Dishes: [
+      {
+        Name: 'Egusi Soup',
+        BasePrice: 2500,
+        Picture: '/Assests/FoodImages/Egusi Soup.jpg',
+      },
+      {
+        Name: 'Ogbono Soup',
+        BasePrice: 2500,
+        Picture: '/Assests/FoodImages/Ogbono Soup.jpg',
+      },
+      {
+        Name: 'Ewedu Soup',
+        BasePrice: 2000,
+        Picture: '/Assests/FoodImages/Ewedu Soup.jpeg',
+      },
+      {
+        Name: 'Oha Soup',
+        BasePrice: 2000,
+        Picture: '/Assests/FoodImages/Oha Soup.jpg',
+      },
+      {
+        Name: 'Banga Soup',
+        BasePrice: 2000,
+        Picture: '/Assests/FoodImages/Banga.jpg',
+      },
+      {
+        Name: 'Nsala Soup',
+        BasePrice: 2000,
+        Picture: '/Assests/FoodImages/Nsala.jpg',
+      },
+    ],
+  },
+  {
+    id: 6,
+    Category: 'Swallows',
+    Dishes: [
+      {
+        Name: 'Amala',
+        BasePrice: 800,
+        Picture: '',
+      },
+      {
+        Name: 'Eba',
+        BasePrice: 500,
+        Picture: '',
+      },
+      {
+        Name: 'Pounded Yam',
+        BasePrice: 800,
+        Picture: '',
+      },
+
+      {
+        Name: 'Fufu',
+        BasePrice: 800,
+        Picture: '',
+      },
+
+      {
+        Name: 'Tuwo Shinkafa',
+        BasePrice: 800,
+        Picture: '',
       },
     ],
   },
 
   {
-    id: 5,
-    Category: 'Soups and Swallows',
+    id: 7,
+    Category: 'Addons',
     Dishes: [
       {
-        Name: 'Egusi Soup',
-        BasePrice: '#2500',
-        AddOns: [
-          { Name: 'Chicken', Price: '#1000' },
-          { Name: 'Fish', Price: '#1200' },
-          { Name: 'Amala', Price: '#500' },
-          { Name: 'Eba', Price: '#500' },
-          { Name: 'Pounded Yam', Price: '#800' },
-        ],
-        Picture: '/Assests/FoodImages/Egusi Soup.jpg',
+        Name: 'Chicken',
+        BasePrice: 1000,
+        Picture: '', // Optional: Add images of addons if needed
       },
       {
-        Name: 'Ogbono Soup',
-        BasePrice: '#2500',
-        AddOns: [
-          { Name: 'Chicken', Price: '#1000' },
-          { Name: 'Fish', Price: '#1200' },
-          { Name: 'Amala', Price: '#500' },
-          { Name: 'Eba', Price: '#500' },
-          { Name: 'Pounded Yam', Price: '#800' },
-        ],
-        Picture: '/Assests/FoodImages/Ogbono Soup.jpg',
+        Name: 'Fish',
+        BasePrice: 1200,
+        Picture: '',
       },
       {
-        Name: 'Ewedu Soup',
-        BasePrice: '#2000',
-        AddOns: [
-          { Name: 'Chicken', Price: '#1000' },
-          { Name: 'Fish', Price: '#1200' },
-          { Name: 'Amala', Price: '#500' },
-          { Name: 'Eba', Price: '#500' },
-          { Name: 'Pounded Yam', Price: '#800' },
-        ],
-        Picture: '/Assests/FoodImages/Ewedu Soup.jpeg',
+        Name: 'Beef',
+        BasePrice: 800,
+        Picture: '',
       },
       {
-        Name: 'Oha Soup',
-        BasePrice: '#2000',
-        AddOns: [
-          { Name: 'Chicken', Price: '#1000' },
-          { Name: 'Fish', Price: '#1200' },
-          { Name: 'Amala', Price: '#500' },
-          { Name: 'Eba', Price: '#500' },
-          { Name: 'Pounded Yam', Price: '#800' },
-        ],
-        Picture: '/Assests/FoodImages/Oha Soup.jpg',
+        Name: 'Shrimp',
+        BasePrice: 500,
+        Picture: '',
       },
-      {
-        Name: 'Banga Soup',
-        BasePrice: '#2000',
-        AddOns: [
-          { Name: 'Chicken', Price: '#1000' },
-          { Name: 'Fish', Price: '#1200' },
-          { Name: 'Amala', Price: '#500' },
-          { Name: 'Eba', Price: '#500' },
-          { Name: 'Pounded Yam', Price: '#800' },
-        ],
-        Picture: '/Assests/FoodImages/Banga.jpg',
-      },
-      {
-        Name: 'Nsala Soup',
-        BasePrice: '#2000',
-        AddOns: [
-          { Name: 'Chicken', Price: '#1000' },
-          { Name: 'Fish', Price: '#1200' },
-          { Name: 'Amala', Price: '#500' },
-          { Name: 'Eba', Price: '#500' },
-          { Name: 'Pounded Yam', Price: '#800' },
-        ],
-        Picture: '/Assests/FoodImages/Nsala.jpg',
-      },
+     
     ],
   },
 ];
+
+// const [cartItems, setCartItems] = useState<Dish[]>([]);
+// const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
+
+// const handleAddToCart = async (dish: Dish, selectedAddons: string[]) => {
+//   const updatedDish = {
+//     ...dish,
+//     Addons: dish.Addons.filter((addon) =>
+//       selectedAddons.includes(addon.Name)
+//     ),
+//   };
+
+//   const existingDish = cartItems.find((item) => item.Name === dish.Name);
+//   if (existingDish) {
+//     await updateCartItem(userId, dish.Name, updatedDish); // Update existing dish
+//   } else {
+//     await addToCart(userId, dish.Name, updatedDish); // Add new dish
+//   }
+// };
+
+// const handleAddonChange = (addonName: string) => {
+//   setSelectedAddons((prev) =>
+//     prev.includes(addonName)
+//       ? prev.filter((name) => name !== addonName)
+//       : [...prev, addonName]
+//   );
+// };
+
+// useEffect(() => {
+//   const getItems = async () => {
+//     try {
+//       const items = await getCartItems(userId);
+//       setCartItems(items);
+//     } catch (error) {
+//       return error;
+//     }
+//   };
+
+//   getItems();
+// }, [userId]);
