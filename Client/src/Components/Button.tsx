@@ -4,12 +4,12 @@ type ButtonProps = {
     radius: string;
     textColor: string;
     backgroundColor:string
-    index:string
+    
 };
 
-function Button({ name,backgroundColor,  padding, radius, textColor,index }: ButtonProps) {
+function Button({ name,backgroundColor,  padding, radius, textColor }: ButtonProps) {
     return (
-        <button className={`${backgroundColor} ${padding} ${radius} ${textColor} ${index}`}>
+        <button className={`${backgroundColor} ${padding} ${radius} ${textColor}`}>
             {name}
         </button>
     );

@@ -13,6 +13,7 @@ export default function SignIn() {
     try {
       if (isLogin) {
         await signin(email, password);
+        window.alert('Login Successfully')
       }
     } catch (error) {
       console.error('Error occurred:', error);

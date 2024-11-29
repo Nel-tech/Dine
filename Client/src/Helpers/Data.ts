@@ -183,31 +183,31 @@ export const MenuData = [
     Category: 'Swallows',
     Dishes: [
       {
-        Name: 'Amala',
+        Name: 'Semovita',
         BasePrice: 800,
-        Picture: '',
+        Picture: '/Assests/FoodImages/Semovita.jpg',
       },
       {
         Name: 'Eba',
         BasePrice: 500,
-        Picture: '',
+        Picture: '/Assests/FoodImages/Eba.jpg',
       },
       {
         Name: 'Pounded Yam',
         BasePrice: 800,
-        Picture: '',
+        Picture: '/Assests/FoodImages/Pounded Yam.jpg',
       },
 
       {
         Name: 'Fufu',
         BasePrice: 800,
-        Picture: '',
+        Picture: '/Assests/FoodImages/Fufu.jpg',
       },
 
       {
         Name: 'Tuwo Shinkafa',
         BasePrice: 800,
-        Picture: '',
+        Picture: '/Assests/FoodImages/TuwoShinkafa.jpg',
       },
     ],
   },
@@ -236,7 +236,6 @@ export const MenuData = [
         BasePrice: 500,
         Picture: '',
       },
-     
     ],
   },
 ];

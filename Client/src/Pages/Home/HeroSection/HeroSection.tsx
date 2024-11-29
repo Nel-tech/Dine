@@ -1,5 +1,5 @@
 import Button from '../../../Components/Button';
-
+import { Link } from 'react-router-dom';
 function HeroSection() {
   return (
    <section className="relative h-[100vh] w-full bg-hero-section bg-cover bg-center bg-no-repeat xs:bg-Mobile-Hero-section sm:bg-Mobile-Hero-section">
@@ -14,6 +14,8 @@ function HeroSection() {
     </div>
 
     <div className="pt-[1rem]">
+      <Link to='/menu'>
+      
       <Button
         name="Explore Menu"
         textColor="text-white"
@@ -22,6 +24,7 @@ function HeroSection() {
         backgroundColor="bg-[#AD343E] hover:bg-[#AD343E] transform hover:scale-105 transition-all duration-200"
         index="z-50"
       />
+      </Link>
     </div>
   </main>
 </section>
