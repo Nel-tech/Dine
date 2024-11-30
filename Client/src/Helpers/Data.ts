@@ -131,7 +131,7 @@ export const MenuData = [
     Category: 'Drinks',
     Dishes: [
       {
-        Name: 'Zob',
+        Name: 'Zobo',
         BasePrice: 500,
         Picture: '/Assests/FoodImages/Zobo.jpg',
       },
