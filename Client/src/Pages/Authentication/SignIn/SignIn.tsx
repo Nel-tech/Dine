@@ -1,11 +1,13 @@
 import NavForm from '../../../Components/NavForm';
 import { signin } from '../../../Services/Auth/Authservice.ts';
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 export default function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const [isLogin] = useState(true);
+  const Navigate = useNavigate()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -14,6 +16,8 @@ export default function SignIn() {
       if (isLogin) {
         await signin(email, password);
         window.alert('Login Successfully')
+        Navigate('/summary')
+
       }
     } catch (error) {
       console.error('Error occurred:', error);

@@ -57,7 +57,7 @@ function Nav() {
           {/* Buttons */}
           <div className="flex gap-4 xs:flex-col sm:flex-col md:flex-row">
             <Link
-              to="/reservation"
+              to="/"
               onClick={() => {
                 setIsOpen(false);
                 window.alert(
@@ -66,7 +66,7 @@ function Nav() {
               }}
             >
               <Button
-                name="Book A Table"
+                name="Contact"
                 backgroundColor="bg-[#AD343E]"
                 textColor="text-white"
                 padding="px-6 py-2"
