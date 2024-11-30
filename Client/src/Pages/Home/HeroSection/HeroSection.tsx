@@ -22,7 +22,7 @@ function HeroSection() {
         radius="rounded-full"
         padding="px-8 py-3"
         backgroundColor="bg-[#AD343E] hover:bg-[#AD343E] transform hover:scale-105 transition-all duration-200"
-        index="z-50"
+      
       />
       </Link>
     </div>
