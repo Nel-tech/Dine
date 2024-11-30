@@ -1,12 +1,12 @@
 import { FaPhone, FaEnvelope, FaLandmark } from 'react-icons/fa';
 function AboutHeroSection() {
   return (
-    <main className=" mt-[5rem] container flex justify-around content-center self-center xs:flex-col sm:flex-col ">
+    <main className=" mt-[5rem]  flex justify-around content-center self-center xs:flex-col sm:flex-col ">
       <section>
         <figure className="relative">
           <img
             src="../../../../Assests/HeroBackground.jpg"
-            className="w-[34rem] rounded-lg  "
+            className="w-[34rem] rounded-lg  mt-[2rem]"
             alt=""
           />
 
@@ -27,7 +27,7 @@ function AboutHeroSection() {
 
                 <figure className="flex  gap-4">
                   <FaLandmark />
-                  <p>Lorem ipsum dolor.</p>
+                  <p>Buk New Site Opposite Nepa Office</p>
                 </figure>
               </section>
             </figcaption>

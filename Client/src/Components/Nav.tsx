@@ -31,8 +31,6 @@ function Nav() {
         <section
           className={`xs:${isOpen ? 'block mx-auto text-center' : 'hidden'} sm:${
             isOpen ? 'block mx-auto text-center' : 'hidden' 
-          } md:${
-            isOpen ? 'block mx-auto text-center' : 'hidden'
           } flex flex-1 items-center justify-between xs:absolute xs:right-0 xs:top-full xs:w-full xs:flex-col xs:bg-white xs:pb-6 xs:shadow-lg sm:absolute sm:right-0 sm:top-full sm:w-full sm:flex-col sm:bg-white sm:pb-6 sm:shadow-lg md:static md:top-0 md:flex md:w-auto md:flex-row md:bg-transparent md:shadow-none`}
         >
           <ul className="flex flex-1 justify-center gap-8 text-[1rem] font-medium text-black xs:flex-col sm:flex-col md:flex-row">

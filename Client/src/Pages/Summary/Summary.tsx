@@ -1,9 +1,82 @@
 
+import {useState, useEffect } from "react"
+import NavForm from "../../Components/NavForm"
+import { getReservationForm } from "../../Services/Cart/CartServices" 
+import { ReservationFormProps,UserProps } from "../Reservations/ReservationForm";
 
-function Summary() {
+
+function Summary({userId}:UserProps) {
+  
+const [Summary, setSummary] = useState<ReservationFormProps>({
+
+   name: '',
+    date: '',
+    time: '',
+    people: 0,
+})
+  useEffect(() => {
+   const handleSummary = async() => {
+   
+    try {
+      const result = await getReservationForm(userId)
+      if (result) {
+        setSummary(result)
+      }
+    } catch (error) {
+       console.error("Error fetching summary:", error);
+    }
+   }
+   handleSummary()
+  },[userId])
   return (
     <section>
-        
+        <NavForm/>
+
+        <div className="max-w-2xl mx-auto my-6 p-6 rounded-lg border border-gray-200 bg-white shadow-lg">
+  {/* Title */}
+  <h2 className="text-xl font-bold text-[#AD343E] mt-[2rem] text-center">Reservation Summary</h2>
+
+  {/* Reservation Details */}
+  <div className="mb-4 mt-4">
+    <h3 className="text-lg font-semibold text-gray-800">Reservation Details</h3>
+    <p className="text-gray-600">Date: <span className="font-medium">{Summary.date}</span></p>
+    <p className="text-gray-600">Time: <span className="font-medium">{Summary.time}</span></p>
+    <p className="text-gray-600">Number of People: <span className="font-medium">{Summary.people}</span></p>
+  </div>
+
+  {/* User Details */}
+  <div className="mb-4">
+    <h3 className="text-lg font-semibold text-gray-800">Guest Information</h3>
+    <p className="text-gray-600">Name: <span className="font-medium">{Summary.name}</span></p>
+  </div>
+
+
+
+  {/* Total Price (Optional) */}
+  <div className="mb-4">
+    <h3 className="text-lg font-semibold text-gray-800">Total Price</h3>
+    <p className="text-gray-600">
+      <span className="font-medium">$120.00</span>
+    </p>
+  </div>
+
+  {/* Action Buttons */}
+  <div className="flex justify-between items-center">
+    <button
+      type="button"
+      className="px-6 py-2 border border-[#AD343E] text-[#AD343E] rounded-lg hover:bg-[#AD343E] hover:text-white transition-all duration-200"
+    >
+      Edit Details
+    </button>
+    <button
+      type="button"
+      className="px-6 py-2 bg-[#AD343E] text-white rounded-lg hover:bg-[#9A2D34] transition-all duration-200"
+    >
+      Confirm Reservation
+    </button>
+  </div>
+</div>
+
     </section>
   )
 }

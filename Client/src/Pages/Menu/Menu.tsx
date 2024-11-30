@@ -45,8 +45,15 @@ function Menu({ userId }: userProps) {
     return () => unsubscribe();
   }, [userId]);
 
-  // Function to handle adding a dish to the cart
+  
   const handleAddToCart = async (dish: Dish) => {
+
+     const isItemInCart = cartItems.some(item => item.Name === dish.Name);
+
+  if (isItemInCart) {
+    window.alert(`${dish.Name} is already in your cart.`);
+    return; 
+  }
     const itemId = dish.Name;
     const itemData = {
       Name: dish.Name,

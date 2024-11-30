@@ -7,6 +7,7 @@ import {
 } from 'firebase/auth';
 import { auth } from '../Auth/config';
 import { FirebaseError } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
 
 export const signup = async (
   email: string,
@@ -71,5 +72,15 @@ export const signout = async (): Promise<void> => {
     } else {
       console.error('Unknown error:', error);
     }
+  }
+};
+
+export const getCurrentUser = async () => {
+    const auth = getAuth()
+    const user = auth.currentUser
+  if(user) {
+  return user.email
+  }else{
+    return null
   }
 };

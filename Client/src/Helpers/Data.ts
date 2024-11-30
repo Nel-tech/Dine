@@ -34,17 +34,22 @@ export const MenuData = [
     Dishes: [
       {
         Name: 'Jollof Rice',
-        BasePrice: 3000,
+        BasePrice: 1500,
         Picture: '/Assests/FoodImages/JollofRice.jpg',
       },
       {
         Name: 'Fried Rice',
-        BasePrice: 3500,
+        BasePrice: 2000,
         Picture: '/Assests/FoodImages/FriedRice.jpg',
       },
       {
+        Name: 'Rice',
+        BasePrice: 1000,
+        Picture: '/Assests/FoodImages/Rice.png',
+      },
+      {
         Name: 'Ofada Rice',
-        BasePrice: 3000,
+        BasePrice: 1000,
         Picture: '/Assests/FoodImages/Ofada Rice.jpg',
       },
       {
@@ -69,9 +74,14 @@ export const MenuData = [
         Picture: '/Assests/FoodImages/PuffPuff.jpg',
       },
       {
-        Name: 'Boli (Roasted Plantain)',
+        Name: 'EggRoll',
         BasePrice: 1500,
-        Picture: '/Assests/FoodImages/RoastedPlaintain.jpg',
+        Picture: '/Assests/FoodImages/EggRoll.jpg',
+      },
+      {
+        Name: 'FishRoll',
+        BasePrice: 1500,
+        Picture: '/Assests/FoodImages/FishRoll.jpg',
       },
       {
         Name: 'Meat Pie',
@@ -110,15 +120,15 @@ export const MenuData = [
         Picture: '/Assests/FoodImages/StockFishStew.jpeg',
       },
       {
-        Name: 'Prawns Stir Fry',
+        Name: 'Asun-Meat',
         BasePrice: 3000,
-        Picture: '', // Add a picture URL
+        Picture: '/Assests/FoodImages/Asun-meat.png',
       },
     ],
   },
   {
     id: 4,
-    Category: 'Beverages',
+    Category: 'Drinks',
     Dishes: [
       {
         Name: 'Zobo',
@@ -140,6 +150,7 @@ export const MenuData = [
         BasePrice: 500,
         Picture: '/Assests/FoodImages/Kunus.jpeg',
       },
+      
     ],
   },
   {
@@ -189,25 +200,30 @@ export const MenuData = [
       },
       {
         Name: 'Eba',
-        BasePrice: 500,
+        BasePrice: 200,
         Picture: '/Assests/FoodImages/Eba.jpg',
       },
       {
         Name: 'Pounded Yam',
-        BasePrice: 800,
+        BasePrice: 500,
         Picture: '/Assests/FoodImages/Pounded Yam.jpg',
       },
 
       {
         Name: 'Fufu',
-        BasePrice: 800,
+        BasePrice: 300,
         Picture: '/Assests/FoodImages/Fufu.jpg',
       },
 
       {
         Name: 'Tuwo Shinkafa',
-        BasePrice: 800,
+        BasePrice: 200,
         Picture: '/Assests/FoodImages/TuwoShinkafa.jpg',
+      },
+      {
+        Name: 'Amala',
+        BasePrice: 200,
+        Picture: '/Assests/FoodImages/Amala.jpg',
       },
     ],
   },
@@ -219,63 +235,24 @@ export const MenuData = [
       {
         Name: 'Chicken',
         BasePrice: 1000,
-        Picture: '', // Optional: Add images of addons if needed
+        Picture: '/Assests/FoodImages/Fried-Chicken.jpg',
       },
       {
         Name: 'Fish',
         BasePrice: 1200,
-        Picture: '',
+        Picture: '/Assests/FoodImages/Fried-Fish.jpg',
       },
       {
         Name: 'Beef',
         BasePrice: 800,
-        Picture: '',
+        Picture: '/Assests/FoodImages/Beef.jpg',
       },
       {
         Name: 'Shrimp',
-        BasePrice: 500,
-        Picture: '',
+        BasePrice: 800,
+        Picture: '/Assests/FoodImages/Shrimps.jpg',
       },
     ],
   },
 ];
 
-// const [cartItems, setCartItems] = useState<Dish[]>([]);
-// const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
-
-// const handleAddToCart = async (dish: Dish, selectedAddons: string[]) => {
-//   const updatedDish = {
-//     ...dish,
-//     Addons: dish.Addons.filter((addon) =>
-//       selectedAddons.includes(addon.Name)
-//     ),
-//   };
-
-//   const existingDish = cartItems.find((item) => item.Name === dish.Name);
-//   if (existingDish) {
-//     await updateCartItem(userId, dish.Name, updatedDish); // Update existing dish
-//   } else {
-//     await addToCart(userId, dish.Name, updatedDish); // Add new dish
-//   }
-// };
-
-// const handleAddonChange = (addonName: string) => {
-//   setSelectedAddons((prev) =>
-//     prev.includes(addonName)
-//       ? prev.filter((name) => name !== addonName)
-//       : [...prev, addonName]
-//   );
-// };
-
-// useEffect(() => {
-//   const getItems = async () => {
-//     try {
-//       const items = await getCartItems(userId);
-//       setCartItems(items);
-//     } catch (error) {
-//       return error;
-//     }
-//   };
-
-//   getItems();
-// }, [userId]);

@@ -8,9 +8,9 @@ function FoodAds() {
         Perfect Place For An Exceptional Experience
       </h1>
 
-    <main className="container mt-[3rem] flex items-center justify-evenly xs:flex-col sm:flex-col sm:justify-center">
+    <main className=" mt-[3rem] flex items-center justify-evenly xs:flex-col sm:flex-col sm:justify-center md:justify-center md:self-center md:items-center">
   <article className="text-center">
-    <h2 className="mt-[2rem] max-w-[15rem] text-[2rem] font-bold text-[#AD343E] xs:pb-[1rem] xs:text-[1.2rem] sm:max-w-[16rem] sm:pb-[1rem] sm:text-[1.4rem] md:text-[1.5rem]">
+    <h2 className=" max-w-[15rem] text-[2rem] font-bold text-[#AD343E] xs:pb-[1rem] xs:text-[1.2rem] sm:max-w-[16rem] sm:pb-[1rem] sm:text-[1.4rem] md:text-[1.5rem]">
       Great Food Steak & Great Restaurant
     </h2>
   </article>
@@ -37,7 +37,7 @@ function FoodAds() {
 
     <ul className="flex items-center gap-1 pb-[1.4rem]">
       <li>
-        <FaCheck className="text-[#AD343E] xs:text-[.8rem] sm:text-[.8rem] md:text-[.9rem]" />
+        <FaCheck className="text-[#AD343E] xs:text-[.8rem] sm:text-[.8rem] md:text-[.rem]" />
       </li>
       <li>
         <p className="xs:text-[.8rem] sm:text-[.8rem] md:text-[.9rem]">
