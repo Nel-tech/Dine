@@ -5,6 +5,7 @@ import {
   updateDoc,
   deleteDoc,
   getDoc,
+  getDocs,
 } from 'firebase/firestore';
 import { db } from '../Auth/config';
 import { Dish } from '../../Pages/Menu/Menu';
@@ -66,5 +67,25 @@ export const getReservationForm = async (
   } catch (error) {
     console.error('Error fetching document:', error);
     throw error;
+  }
+};
+
+export const getCartItems = async (userId: string) => {
+  try {
+    const cartRef = collection(db, `users/${userId}/cart`);
+    const cartSnapshot = await getDocs(cartRef);
+
+    if (!cartSnapshot.empty) {
+      // If the snapshot contains documents, extract their data
+      const cartItems = cartSnapshot.docs.map((doc) => doc.data()); // Map to get the data of each document
+      console.log('Cart Items:', cartItems);
+      return cartItems; // Return an array of cart items
+    } else {
+      console.log('No items found in the cart.');
+      return []; // Return an empty array if no documents are found
+    }
+  } catch (error) {
+    console.error('Error fetching cart items:', error);
+    throw error; // Re-throw the error to handle it in the calling function
   }
 };

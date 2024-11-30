@@ -6,6 +6,7 @@ import { onSnapshot, collection } from 'firebase/firestore';
 import { db } from '../../Services/Auth/config';
 import { Link } from 'react-router-dom';
 
+
 type userProps = {
   userId: string;
 };
@@ -21,6 +22,7 @@ function Menu({ userId }: userProps) {
   const [cartItems, setCartItems] = useState<Dish[]>([]);
   const [total, setTotal] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  
 
   const filteredMenu = Category
     ? MenuData.filter((menu) => menu.Category === Category)
@@ -61,9 +63,12 @@ function Menu({ userId }: userProps) {
       Picture: dish.Picture,
     };
 
+    
+
     try {
       await addToCart(userId, itemId, itemData);
       window.alert(`${dish.Name} added to the cart`);
+     
     } catch (error) {
       console.error('Error adding to cart:', error);
     }
@@ -79,7 +84,7 @@ function Menu({ userId }: userProps) {
     }
   };
 
-  // Recalculate total when cartItems change
+  
   useEffect(() => {
     const totalCost = cartItems
       .map((cost) => cost.BasePrice)
@@ -88,6 +93,8 @@ function Menu({ userId }: userProps) {
   }, [cartItems]);
 
   return (
+  
+    
     <div>
       <header className="fixed top-0 z-50 w-full bg-white shadow-md">
         <nav className="flex items-center justify-between px-6 py-4">
@@ -166,7 +173,7 @@ function Menu({ userId }: userProps) {
         </div>
       </main>
 
-      {isOpen && (
+      {  isOpen && (
         <div className="fixed right-8 top-16 w-[20rem] rounded-lg border bg-white p-4 shadow-lg">
           <h2 className="mb-4 text-xl font-semibold text-[#AD343E]">Cart</h2>
           <div className="my-[3rem]">
@@ -228,6 +235,8 @@ function Menu({ userId }: userProps) {
         </div>
       )}
     </div>
+
+    
   );
 }
 

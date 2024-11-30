@@ -7,6 +7,10 @@ import SignUp from './Pages/Authentication/SignUp/SignUp';
 import Menu from './Pages/Menu/Menu';
 import ReservationForm from './Pages/Reservations/ReservationForm';
 import Summary from './Pages/Summary/Summary'
+
+
+
+
 function App() {
   return (
     <>
@@ -18,7 +22,8 @@ function App() {
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/menu" element={<Menu userId="userId" />}></Route>
            <Route path="/reservation" element={<ReservationForm userId='userId' />}></Route>
-            <Route path="/summary" element={<Summary userId='userId' />}></Route>
+            <Route path="/summary" element={<Summary userId='userId'/>}></Route>
+           
         </Routes>
       </Router>
     </>

@@ -3,10 +3,13 @@ import {useState, useEffect } from "react"
 import NavForm from "../../Components/NavForm"
 import { getReservationForm } from "../../Services/Cart/CartServices" 
 import { ReservationFormProps,UserProps } from "../Reservations/ReservationForm";
+import BaseFooter from "../../Components/BaseFooter";
+import { getCartItems } from "../../Services/Cart/CartServices";
 
 
 function Summary({userId}:UserProps) {
-  
+const [cart, setCart] = useState<any[]>([]); // Adjust the type if necessary
+  const [totalPrice, setTotalPrice] = useState<number>(0);
 const [Summary, setSummary] = useState<ReservationFormProps>({
 
    name: '',
@@ -28,6 +31,23 @@ const [Summary, setSummary] = useState<ReservationFormProps>({
    }
    handleSummary()
   },[userId])
+useEffect(() => {
+    const fetchCartItems = async () => {
+      try {
+        const cartData = await getCartItems(userId); // Pass userId to get cart items
+        setCart(cartData);
+
+        // Calculate total price
+        const total = cartData.reduce((acc: number, item: unknown) => acc + item.BasePrice, 0);
+        setTotalPrice(total);
+      } catch (error) {
+        console.error('Error fetching cart:', error);
+      }
+    };
+
+    fetchCartItems();
+  }, [userId]);
+  
   return (
     <section>
         <NavForm/>
@@ -50,18 +70,21 @@ const [Summary, setSummary] = useState<ReservationFormProps>({
     <p className="text-gray-600">Name: <span className="font-medium">{Summary.name}</span></p>
   </div>
 
+<ul>
+  <li></li>
+</ul>
 
 
   {/* Total Price (Optional) */}
   <div className="mb-4">
     <h3 className="text-lg font-semibold text-gray-800">Total Price</h3>
     <p className="text-gray-600">
-      <span className="font-medium">$120.00</span>
+      <span className="font-medium">${totalPrice}</span>
     </p>
   </div>
 
   {/* Action Buttons */}
-  <div className="flex justify-between items-center">
+  <div className="flex justify-between items-center xs:flex-col xs:gap-3 sm:flex-col sm:gap-3">
     <button
       type="button"
       className="px-6 py-2 border border-[#AD343E] text-[#AD343E] rounded-lg hover:bg-[#AD343E] hover:text-white transition-all duration-200"
@@ -76,6 +99,7 @@ const [Summary, setSummary] = useState<ReservationFormProps>({
     </button>
   </div>
 </div>
+<BaseFooter/>
 
     </section>
   )

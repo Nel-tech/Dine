@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import NavForm from '../../Components/NavForm';
-import Footer from '../../Components/Footer';
+import BaseFooter from '../../Components/BaseFooter';
 import { getCurrentUser } from '../../Services/Auth/Authservice'; // Fetch current user email
 import { reserveForm } from '../../Services/Cart/CartServices';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+
 
 export type UserProps = {
   userId: string;
@@ -59,7 +60,7 @@ function ReservationForm({ userId }: UserProps) {
     e.preventDefault();
 
     try {
-      await reserveForm(userId, Reserve);  // Passing reserve object as the second argument
+      await reserveForm(userId, Reserve); // Passing reserve object as the second argument
       alert('Reservation confirmed!');
       Navigate('/summary');
     } catch (error) {
@@ -81,23 +82,23 @@ function ReservationForm({ userId }: UserProps) {
   return (
     <main>
       <NavForm />
-      <section className="mx-auto h-[100vh] w-full px-4 py-[5rem]">
-        <h1 className="mx-auto text-center text-[2rem] text-[#AD343E]">
+      <section className="mx-auto w-full px-4 py-[5rem]">
+        <h1 className="mx-auto text-center text-[2rem] text-[#AD343E] xs:text-[1.2rem] xs:font-semibold sm:text-[1.5rem] sm:font-semibold">
           Book A Table
         </h1>
-        <p className="mx-auto max-w-[30rem] pb-[.9rem] text-center">
+        <p className="mx-auto max-w-[30rem] pb-[.9rem] text-center xs:text-[.9rem] sm:text-[1rem]">
           We can’t wait to host you. Reserve your table now and prepare for an
           unforgettable dining experience.
         </p>
 
-        <article className="mx-auto w-[30rem] rounded-lg bg-[#F9F9F7] pb-[4rem]">
+        <article className="mx-auto w-[30rem] rounded-lg bg-[#F9F9F7] pb-[4rem] xs:w-[18rem] sm:w-[22rem]">
           <form className="mx-auto pt-[3rem]" onSubmit={handleForm}>
             {/* Name Input */}
             <div className="mb-6 px-[2rem]">
               <label htmlFor="name">Name</label>
               <input
                 type="text"
-                name="name"  // Make sure the 'name' matches the property in the state
+                name="name" // Make sure the 'name' matches the property in the state
                 id="name"
                 required
                 value={Reserve.name}
@@ -124,7 +125,7 @@ function ReservationForm({ userId }: UserProps) {
               <label htmlFor="date">Pick A Date</label>
               <input
                 type="date"
-                name="date"  // Name must match the 'date' in the state
+                name="date" // Name must match the 'date' in the state
                 id="date"
                 required
                 value={Reserve.date}
@@ -138,7 +139,7 @@ function ReservationForm({ userId }: UserProps) {
               <label htmlFor="time">Pick A Time</label>
               <input
                 type="time"
-                name="time"  // Name must match 'time' in the state
+                name="time" // Name must match 'time' in the state
                 id="time"
                 value={Reserve.time}
                 onChange={handleChange}
@@ -152,7 +153,7 @@ function ReservationForm({ userId }: UserProps) {
               <label htmlFor="people">Number Of People</label>
               <input
                 type="number"
-                name="people"  // Name must match 'people' in the state
+                name="people" // Name must match 'people' in the state
                 id="people"
                 required
                 value={Reserve.people}
@@ -173,8 +174,7 @@ function ReservationForm({ userId }: UserProps) {
           </form>
         </article>
       </section>
-
-      <Footer />
+     <BaseFooter/>
     </main>
   );
 }
