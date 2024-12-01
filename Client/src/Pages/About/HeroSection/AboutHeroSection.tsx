@@ -3,10 +3,10 @@ function AboutHeroSection() {
   return (
     <main className=" mt-[5rem]  flex justify-around content-center self-center xs:flex-col sm:flex-col ">
       <section>
-        <figure className="relative">
+        <figure className="relative mx-auto flex justify-center self-center items-center">
           <img
             src="../../../../Assests/HeroBackground.jpg"
-            className="w-[34rem] rounded-lg  mt-[2rem]"
+            className="w-[34rem] rounded-lg  mt-[2rem] xs:w-[18rem]"
             alt=""
           />
 

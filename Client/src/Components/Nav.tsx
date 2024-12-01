@@ -57,16 +57,30 @@ function Nav() {
           {/* Buttons */}
           <div className="flex gap-4 xs:flex-col sm:flex-col md:flex-row">
             <Link
-              to="/"
+              to="/signup"
               onClick={() => {
                 setIsOpen(false);
-                window.alert(
-                  'Please note you are reserving a table without ordering'
-                );
+               
               }}
             >
               <Button
-                name="Contact"
+                name="Sign up"
+                backgroundColor="bg-[#AD343E]"
+                textColor="text-white"
+                padding="px-6 py-2"
+                radius="rounded-full"
+              />
+            </Link>
+
+            <Link
+              to="/signin"
+              onClick={() => {
+                setIsOpen(false);
+                
+              }}
+            >
+              <Button
+                name="Login"
                 backgroundColor="bg-[#AD343E]"
                 textColor="text-white"
                 padding="px-6 py-2"

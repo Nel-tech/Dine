@@ -5,11 +5,7 @@ import { addToCart, removeFromCart } from '../../Services/Cart/CartServices';
 import { onSnapshot, collection } from 'firebase/firestore';
 import { db } from '../../Services/Auth/config';
 import { Link } from 'react-router-dom';
-
-
-type userProps = {
-  userId: string;
-};
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
 export type Dish = {
   Name: string;
@@ -17,19 +13,31 @@ export type Dish = {
   Picture: string;
 };
 
-function Menu({ userId }: userProps) {
+function Menu() {
   const [Category, setCategory] = useState('');
   const [cartItems, setCartItems] = useState<Dish[]>([]);
   const [total, setTotal] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
-  
+  const [userId, setUserId] = useState<string | null>(null);
 
   const filteredMenu = Category
     ? MenuData.filter((menu) => menu.Category === Category)
     : MenuData;
 
+  // Track authentication state
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
+      setUserId(user?.uid || null);
+    });
+
+    return () => unsubscribeAuth();
+  }, []);
+
   // Set up real-time listener for cart items
   useEffect(() => {
+    if (!userId) return; // Only set up the listener if a user is authenticated
+
     const cartRef = collection(db, `users/${userId}/cart`);
     const unsubscribe = onSnapshot(cartRef, (snapshot) => {
       const items = snapshot.docs.map((doc) => {
@@ -47,15 +55,19 @@ function Menu({ userId }: userProps) {
     return () => unsubscribe();
   }, [userId]);
 
-  
+  // Add item to cart
   const handleAddToCart = async (dish: Dish) => {
+    if (!userId) {
+      window.alert('You need to log in to add items to the cart.');
+      return;
+    }
 
-     const isItemInCart = cartItems.some(item => item.Name === dish.Name);
+    const isItemInCart = cartItems.some((item) => item.Name === dish.Name);
+    if (isItemInCart) {
+      window.alert(`${dish.Name} is already in your cart.`);
+      return;
+    }
 
-  if (isItemInCart) {
-    window.alert(`${dish.Name} is already in your cart.`);
-    return; 
-  }
     const itemId = dish.Name;
     const itemData = {
       Name: dish.Name,
@@ -63,18 +75,21 @@ function Menu({ userId }: userProps) {
       Picture: dish.Picture,
     };
 
-    
-
     try {
       await addToCart(userId, itemId, itemData);
       window.alert(`${dish.Name} added to the cart`);
-     
     } catch (error) {
       console.error('Error adding to cart:', error);
     }
   };
 
+  // Remove item from cart
   const removeCart = async (dish: Dish) => {
+    if (!userId) {
+      window.alert('You need to log in to remove items from the cart.');
+      return;
+    }
+
     const itemId = dish.Name;
     try {
       await removeFromCart(userId, itemId);
@@ -83,6 +98,7 @@ function Menu({ userId }: userProps) {
       console.error('Error removing item:', error);
     }
   };
+;
 
   
   useEffect(() => {
@@ -217,14 +233,10 @@ function Menu({ userId }: userProps) {
               </div>
 
               <div className="mt-4">
-                <Link to="/signup">
+                <Link to="/reservation">
                   <button
                     className="w-full rounded bg-[#AD343E] py-2 text-white transition-colors hover:bg-[#8b2a34]"
-                    onClick={() =>
-                      window.alert(
-                        'You need to authenticate first before you can proceed'
-                      )
-                    }
+                    
                   >
                     Checkout
                   </button>

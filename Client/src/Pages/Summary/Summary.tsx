@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import NavForm from "../../Components/NavForm";
-import { getReservationForm } from "../../Services/Cart/CartServices";
 import { ReservationFormProps, UserProps } from "../Reservations/ReservationForm";
 import BaseFooter from "../../Components/BaseFooter";
-import { getCartItems } from "../../Services/Cart/CartServices";
+import { getCartItems, getReservationForm} from "../../Services/Cart/CartServices";
 
 
 function Summary({ userId }: UserProps) {

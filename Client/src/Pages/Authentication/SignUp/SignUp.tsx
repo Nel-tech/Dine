@@ -23,7 +23,7 @@ const handleSubmit = async (e: React.FormEvent) => {
     if (isSignup) {      
       await signup(email, password, passwordConfirm);
       window.alert('Account successfully created');
-      Navigate('/reservation');
+      Navigate('/menu');
     } 
   } catch (error) {
     console.error('Error occurred:', error);

@@ -49,7 +49,7 @@ function ReservationForm({ userId }: UserProps) {
 
   const handlePeople = (e: React.ChangeEvent<HTMLInputElement>) => {
     const count = Number(e.target.value);
-    if (count <= 0) {
+    if (count < 0) {
       window.alert('Invalid Number');
     } else {
       handleChange(e);
