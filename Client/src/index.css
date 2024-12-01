@@ -16,8 +16,11 @@
     @apply max-w-[1024px] mx-auto
   }
 }
-.torn-bottom {
-   mask-size: cover;
-   mask-repeat: no-repeat;
-   mask-position: bottom;
- }
+
+.no-scrollbar {
+ scrollbar-width: none; 
+  -ms-overflow-style: none;
+}
+
+
+

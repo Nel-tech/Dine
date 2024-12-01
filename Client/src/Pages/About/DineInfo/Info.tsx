@@ -3,7 +3,7 @@ function Info() {
     <main className="bg-[#F9F9F7] w-[100%] mt-[4rem]">
       <section className="container  flex justify-around items-center content-center xs:flex-col sm:pt-[3rem]">
         <article>
-          <h1 className=" text-[1.5rem] font-bold pb-[1rem]  xs:text-[1.3rem]">
+          <h1 className=" text-[1.5rem] font-bold pb-[1rem]  xs:text-[1rem] xs:text-center xs:font-extrabold">
             A little information for our valuable guest
           </h1>
           <p className="max-w-[30rem] text-[.9rem] leading-[1.5rem]">

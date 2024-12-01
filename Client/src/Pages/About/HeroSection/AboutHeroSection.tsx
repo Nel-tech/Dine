@@ -6,8 +6,8 @@ function AboutHeroSection() {
         <figure className="relative mx-auto flex justify-center self-center items-center">
           <img
             src="../../../../Assests/HeroBackground.jpg"
-            className="w-[34rem] rounded-lg  mt-[2rem] xs:w-[18rem]"
-            alt=""
+            className="w-[34rem] rounded-lg  mt-[2rem] xs:w-[18rem] sm:w-[22rem]"
+            alt="Food Image"
           />
 
           <div className="absolute bottom-[-2rem] right-[-3rem] xs:hidden sm:hidden">
@@ -36,11 +36,11 @@ function AboutHeroSection() {
       </section>
 
       <section className="mt-[3.7rem] sm:mt-[6rem]">
-        <h1 className="text-[#AD343E] text-[1.5rem]  font-bold xs:text-[1.2rem] xs:mx-auto ">
+        <h1 className="text-[#AD343E] text-[1.5rem]  font-bold xs:text-[1rem] xs:mx-auto xs:text-center xs:font-extrabold sm:text-[1.2rem] sm:text-center sm:font-extrabold ">
           Where Flavor Meets Convenience
         </h1>
 
-        <p className="text-[.9rem] max-w-[33rem] leading-[2rem]">
+        <p className="text-[.9rem] max-w-[33rem] leading-[2rem] xs:px-[1rem] xs:text-justify sm:px-[1rem] sm:text-justify">
           At Dine, we redefine the way you experience dining. From exquisite
           dishes crafted with the freshest ingredients to seamless online
           reservations, we bring convenience, flavor, and sophistication to your

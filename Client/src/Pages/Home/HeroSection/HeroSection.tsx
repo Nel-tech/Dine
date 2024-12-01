@@ -15,15 +15,17 @@ function HeroSection() {
 
         <div className="pt-[1rem]">
           <Link
-            to="/reservation"
+            to="/signup"
             onClick={() => {
               window.alert(
-                'Please note you are reserving a table without ordering'
+                'You have to authenticate first before you can have access to our menu'
               );
             }}
           >
             <Button
-              name="Book Table"
+            className='none'
+            border='none'
+              name="Explore Menu"
               textColor="text-white"
               radius="rounded-full"
               padding="px-8 py-3"

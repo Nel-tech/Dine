@@ -2,10 +2,9 @@ import {
   collection,
   doc,
   setDoc,
-  updateDoc,
   deleteDoc,
   getDoc,
-  getDocs,
+  getDocs
 } from 'firebase/firestore';
 import { db } from '../Auth/config';
 import { Dish } from '../../Pages/Menu/Menu';
@@ -22,7 +21,9 @@ export const addToCart = async (
     return;
   }
   try {
-    const cartRef = doc(collection(db, `users/${userId}/cart`), itemId);
+    // Construct the document reference properly
+    const cartRef = doc(db, `users/${userId}/cart`, itemId);
+    console.log('Firestore Path:', `users/${userId}/cart/${itemId}`);
     await setDoc(cartRef, itemData);
     console.log('Item added to cart successfully!');
   } catch (error) {
@@ -31,25 +32,7 @@ export const addToCart = async (
   }
 };
 
-// Update cart item based on add-ons
-export const updateCartItem = async (
-  userId: string | null,
-  itemId: string,
-  itemData: Dish
-) => {
-  if (!userId) {
-    console.error('Error: User not authenticated.');
-    return;
-  }
-  try {
-    const cartRef = doc(db, `users/${userId}/cart/${itemId}`);
-    await updateDoc(cartRef, itemData);
-    console.log('Cart item updated successfully!');
-  } catch (error) {
-    console.error('Error updating cart item:', error);
-    throw error;
-  }
-};
+
 
 // Remove item from cart
 export const removeFromCart = async (userId: string | null, itemId: string) => {
@@ -71,20 +54,21 @@ export const removeFromCart = async (userId: string | null, itemId: string) => {
 export const reserveForm = async (
   userId: string | null,
   formData: ReservationFormProps
-) => {
+): Promise<void> => {
   if (!userId) {
     console.error('Error: User not authenticated.');
     return;
   }
   try {
-    // Generate a unique ID for the reservation
-    const reservationRef = doc(collection(db, 'reservations'));
+    // Define the path to the user's reservations subcollection
+    const reservationRef = doc(db, `users/${userId}/reservations/${userId}`);
+
+    // Save the reservation
     await setDoc(reservationRef, {
       ...formData,
-      userId,
-      createdAt: Date.now(),
     });
-    console.log('Reservation saved successfully!');
+
+    console.log('Reservation saved successfully for user:', userId);
   } catch (error) {
     console.error('Error saving reservation:', error);
     throw error;
@@ -95,51 +79,54 @@ export const reserveForm = async (
 export const getReservationForm = async (
   userId: string
 ): Promise<ReservationFormProps | null> => {
+  if (!userId) {
+    console.error('User ID is required to fetch reservation form.');
+    return null;
+  }
+
   try {
-    const docRef = doc(db, `reservations/${userId}`);
+    const docRef = doc(db, `users/${userId}/reservations/${userId}`);
+    console.log('Firestore Path:', `users/${userId}/reservations/${userId}`);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
       console.log('Reservation Data:', docSnap.data());
-      return docSnap.data() as ReservationFormProps;
+      return docSnap.data() as ReservationFormProps; // Return reservation data
     } else {
-      console.log('No reservation found!');
+      console.log('No reservation document found!');
       return null;
     }
   } catch (error) {
-    console.error('Error fetching reservation form:', error);
+    console.error('Error fetching reservation document:', error);
     throw error;
   }
 };
 
-export const getCartItems = async (userId: string | null): Promise<Dish[]> => {
-  if (!userId) {
-    console.error('Error: User not authenticated.');
-    return [];
-  }
-
+export const getCartItems = async (userId: string) => {
+  console.log(`Fetching cart items for user: ${userId}`); // Log userId
   try {
     const cartRef = collection(db, `users/${userId}/cart`);
     const cartSnapshot = await getDocs(cartRef);
 
-    if (!cartSnapshot.empty) {
-      const cartItems = cartSnapshot.docs.map((doc) => {
-        const data = doc.data();
-        return {
-          id: doc.id,
-          Name: data.Name,
-          BasePrice: data.BasePrice,
-          Picture: data.Picture,
-        } as Dish;
-      });
-      console.log('Cart Items:', cartItems);
-      return cartItems;
-    } else {
-      console.log('No items found in the cart.');
+    if (cartSnapshot.empty) {
+      console.warn('Cart is empty');
       return [];
     }
+
+    const items = cartSnapshot.docs.map((doc) => ({
+      Name: doc.data().Name,
+      BasePrice: doc.data().BasePrice, 
+      Picture: doc.data().Picture, 
+      ...doc.data(),
+    }));
+
+    console.log('Cart items fetched:', items); 
+    return items;
   } catch (error) {
     console.error('Error fetching cart items:', error);
     throw error;
   }
 };
+
+
+

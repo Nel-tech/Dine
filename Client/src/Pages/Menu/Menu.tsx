@@ -127,7 +127,7 @@ function Menu() {
 
       <main className="mt-[6rem] ">
       <div className="relative mb-8 overflow-hidden px-4">
-  <div className="scrollbar-hide flex items-center justify-center gap-4 overflow-x-auto whitespace-nowrap">
+  <div className=" flex items-center justify-center gap-4 overflow-x-auto whitespace-nowrap no-scrollbar">
     {/* "All" Button */}
     <button
       onClick={() => setCategory('')}
@@ -190,7 +190,7 @@ function Menu() {
       </main>
 
       {  isOpen && (
-        <div className="fixed right-8 top-16 w-[20rem] rounded-lg border bg-white p-4 shadow-lg">
+        <div className="fixed right-8 top-16 w-[20rem] rounded-lg border bg-white p-4 shadow-lg xs:w-[15rem] md:right-[1rem]">
           <h2 className="mb-4 text-xl font-semibold text-[#AD343E]">Cart</h2>
           <div className="my-[3rem]">
             {/* Iterate through cartItems */}

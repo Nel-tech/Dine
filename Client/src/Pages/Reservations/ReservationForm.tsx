@@ -4,29 +4,32 @@ import BaseFooter from '../../Components/BaseFooter';
 import { getCurrentUser } from '../../Services/Auth/Authservice'; // Fetch current user email
 import { reserveForm } from '../../Services/Cart/CartServices';
 import { useNavigate } from 'react-router-dom';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
-
-export type UserProps = {
-  userId: string;
-};
 
 export type ReservationFormProps = {
   name: string;
   date: string;
-  time: string;
   people: number;
 };
 
-function ReservationForm({ userId }: UserProps) {
+function ReservationForm() {
   const Navigate = useNavigate();
+  const [userId, setUserId] = useState<string | null>(null);
   const [userEmail, setUserEmail] = useState('');
   const [Reserve, setReservation] = useState<ReservationFormProps>({
     name: '',
     date: '',
-    time: '',
     people: 0,
   });
+useEffect(() => {
+    const auth = getAuth();
+    const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
+      setUserId(user?.uid || null);
+    });
 
+    return () => unsubscribeAuth();
+  }, []);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setReservation((prev) => ({
@@ -130,20 +133,6 @@ function ReservationForm({ userId }: UserProps) {
                 required
                 value={Reserve.date}
                 onChange={handleDateChange}
-                className="block w-full rounded border border-gray-300 px-3 py-1 text-gray-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              />
-            </div>
-
-            {/* Time Input */}
-            <div className="mb-6 px-[2rem]">
-              <label htmlFor="time">Pick A Time</label>
-              <input
-                type="time"
-                name="time" // Name must match 'time' in the state
-                id="time"
-                value={Reserve.time}
-                onChange={handleChange}
-                required
                 className="block w-full rounded border border-gray-300 px-3 py-1 text-gray-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
