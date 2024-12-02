@@ -1,9 +1,8 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: './', // Base URL matches the subdirectory
+  base: './', // Relative base path
   build: {
     outDir: 'dist',
   },
-  publicDir: 'public',
 });
