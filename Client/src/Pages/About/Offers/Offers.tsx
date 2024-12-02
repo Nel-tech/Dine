@@ -1,9 +1,12 @@
+import Timer from '../../../assets/timer 1.svg'
+import Menu from '../../../assets/restaurant-menu.svg'
+import Icon from '../../../assets/Icon.svg'
 function Offers() {
   return (
     <main className=" container flex justify-between content-center self-center mt-[5rem] xs:flex-col sm:flex-col">
       <section className="flex justify-center content-center self-center gap-[1rem] xs:pb-[1rem] sm:pb-[1rem]">
         <figure>
-          <img src="../../../../Assests/restaurant-menu.svg" className="w-[2rem]" alt="restaurant-menu" />
+          <img src={Menu} className="w-[2rem]" alt="restaurant-menu" />
         </figure>
         <figure>
           <h1 className="font-bold text-[1rem]">A World of Delights</h1>
@@ -14,7 +17,7 @@ function Offers() {
 
       <section className="flex justify-center content-center self-center gap-[1rem]  xs:pb-[1rem] sm:pb-[1rem]">
         <figure>
-          <img src="../../../../Assests/Icon.svg" className="w-[2rem]" alt="Reservation-Icon" />
+          <img src={Icon} className="w-[2rem]" alt="Reservation-Icon" />
         </figure>
         <figure>
           <h1 className="font-bold text-[1rem]">Effortless Reservations</h1>
@@ -25,7 +28,7 @@ function Offers() {
 
       <section className="flex justify-center content-center self-center gap-[1rem]  xs:pb-[1rem] sm:pb-[1rem]">
         <figure>
-          <img src="../../../../Assests/timer 1.svg"  className="w-[2rem]" alt="Timer" />
+          <img src={Timer}  className="w-[2rem]" alt="Timer" />
         </figure>
         <figure>
           <h1 className="font-bold text-[1rem]">Swift and Fresh</h1>

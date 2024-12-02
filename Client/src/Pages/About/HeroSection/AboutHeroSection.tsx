@@ -1,11 +1,12 @@
 import { FaPhone, FaEnvelope, FaLandmark } from 'react-icons/fa';
+import HeroBackground from '../../../assets/HeroBackground.jpg'
 function AboutHeroSection() {
   return (
     <main className=" mt-[5rem]  flex justify-around content-center self-center xs:flex-col sm:flex-col ">
       <section>
         <figure className="relative mx-auto flex justify-center self-center items-center">
           <img
-            src="/src/assets/HeroBackground.jpg"
+            src={HeroBackground}
             className="w-[34rem] rounded-lg  mt-[2rem] xs:w-[18rem] sm:w-[22rem]"
             alt="Food Image"
           />

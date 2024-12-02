@@ -1,3 +1,4 @@
+import Chef from '../../../assets/chef.jpg'
 function Info() {
   return (
     <main className="bg-[#F9F9F7] w-[100%] mt-[4rem]">
@@ -40,7 +41,7 @@ function Info() {
 
         <figure className="mt-8">
           <img
-            src="/src/assets/chef.jpg"
+            src={Chef}
             alt="Picture-of-a-chef"
             className="w-[30rem] pb-[1rem] rounded-md xs:hidden"
           />

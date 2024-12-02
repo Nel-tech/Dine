@@ -1,16 +1,18 @@
-
+import Chef from '../../../assets/chef.jpg'
+import Salads from '../../../assets/various-salads.png'
+import Curry from '../../../assets/sour-curry-with-snakehead.png'
 import { FaUtensils, FaCartArrowDown,FaWineGlassAlt, FaClock } from "react-icons/fa";
 function WorkFLow() {
   return (
     <section className="container flex justify-evenly mx-auto self-center content-center lg:gap-[2rem] xs:flex-col sm:flex-col md:flex-col">
         <main className="flex gap-[1.5rem] xs:flex-col">
             <figure>
-                <img src='/src/assets/chef.jpg' alt='Picture-of-a-chef' className="w-[23rem] rounded-md xs:w-[15rem] xs:mx-auto"/>
+                <img src={Chef} alt='Picture-of-a-chef' className="w-[23rem] rounded-md xs:w-[15rem] xs:mx-auto"/>
             </figure>
 
              <figure className="pt-[.9rem]">
-                <img src='/src/assets/various-salads.png' className="w-[15rem]  xs:w-[12rem] xs:mx-auto " alt='various-salads' />
-                <img src='/src/assets/sour-curry-with-snakehead.png' className="w-[15rem] pt-[.9rem] xs:w-[12rem] xs:mx-auto" alt='various-salads'/>
+                <img src={Salads}className="w-[15rem]  xs:w-[12rem] xs:mx-auto " alt='various-salads' />
+                <img src={Curry} className="w-[15rem] pt-[.9rem] xs:w-[12rem] xs:mx-auto" alt='various-salads'/>
             </figure>
 
         </main>

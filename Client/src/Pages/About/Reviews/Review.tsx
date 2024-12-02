@@ -1,4 +1,7 @@
 // import { CustomerRev } from "../../../Helpers/Data";
+import Profile1 from '../../../assets/Profile1.jpg'
+import Profile2 from '../../../assets/Profile2.jpg'
+import Profile3 from '../../../assets/Profile3.jpeg'
 function Review() {
   return (
     <main className="mt-[5rem]">
@@ -16,8 +19,8 @@ function Review() {
             </p>
             <div className="flex gap-3 self-center items-center content-center pt-[.7rem]">
               <img
-                src="/src/assets/Profile1.jpg"
-                alt=""
+                src={Profile1}
+                alt="Bello Miracle"
                 className="w-[50px] h-[50px] rounded-full object-cover"
               />
               <p className="text-[.6rem] font-bold">Bello Miracle</p>
@@ -34,8 +37,8 @@ function Review() {
 
             <div className="flex gap-3 self-center items-center content-center pt-[.7rem]">
               <img
-                src="/src/assets/Profile2.jpg"
-                alt=""
+                src={Profile2}
+                alt="Femi Kayode"
                className="w-[50px] h-[50px] rounded-full object-cover"
               />
                <p className="text-[.6rem] font-bold">Femi Kayode</p>
@@ -52,8 +55,8 @@ function Review() {
             <div className="flex gap-3 self-center items-center content-center pt-[.7rem]">
 
             <img
-              src="/src/assets/Profile3.jpeg"
-              alt=""
+              src={Profile3}
+              alt="Rachel Frisk"
              className="w-[50px] h-[50px] rounded-full object-cover"
             />
             <p className="text-[.6rem] font-bold">Rachel Frisk</p>

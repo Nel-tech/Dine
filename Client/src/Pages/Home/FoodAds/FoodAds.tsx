@@ -1,5 +1,5 @@
 import '../../../index.css';
-
+import food1 from '../../../assets/food1.png'
 import { FaCheck } from 'react-icons/fa';
 function FoodAds() {
   return (
@@ -17,7 +17,7 @@ function FoodAds() {
 
   <figure className="mx-4">
     <img
-      src="/src/assets/food1.png"
+      src={food1}
       className="w-[18rem] xs:w-[11rem] sm:w-[12rem] md:w-[12rem]"
       alt="Delicious food presentation"
     />
