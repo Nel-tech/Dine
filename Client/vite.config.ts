@@ -1,10 +1,17 @@
 import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
+  plugins: [react()],
+  base: '/', // Use absolute path
   build: {
-    outDir: 'dist', // Output directory for the build files
+    outDir: 'dist',
     rollupOptions: {
-      input: 'index.html', // Ensure the correct entry point for Vite
+      output: {
+        entryFileNames: 'assets/[name]-[hash].js',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]',
+      },
     },
   },
 });
