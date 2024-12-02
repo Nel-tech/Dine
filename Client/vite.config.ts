@@ -1,8 +1,9 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/', // Adjust if you're deploying to a subdirectory
+  base: '/client/', // Base URL matches the subdirectory
   build: {
-    outDir: 'dist', // Output directory
+    outDir: 'dist',
   },
+  publicDir: 'public',
 });
