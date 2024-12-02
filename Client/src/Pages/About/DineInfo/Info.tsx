@@ -40,7 +40,7 @@ function Info() {
 
         <figure className="mt-8">
           <img
-            src="/Assests/chef.jpg"
+            src="/src/assets/chef.jpg"
             alt="Picture-of-a-chef"
             className="w-[30rem] pb-[1rem] rounded-md xs:hidden"
           />

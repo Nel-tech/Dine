@@ -1,10 +1,13 @@
+import Profile1 from '../assets/Profile1.jpg';
+import Profile2 from '../assets/Profile2.jpg';
+import Profile3 from '../assets/Profile3.jpeg';
 export const CustomerRev = [
   {
     id: 1,
     Title: 'The best restaurant',
     Review:
       'Last night, we dined at place and were simply blown away. From the moment we stepped in, we were enveloped in an inviting atmosphere and greeted with warm smiles.',
-    Profile: '../../Assests/Profile1.jpg',
+    Profile: Profile1,
     Name: 'Aliyu Miracle',
   },
 
@@ -13,7 +16,7 @@ export const CustomerRev = [
     Title: 'Simply delicious',
     Review:
       'Place exceeded my expectations on all fronts. The ambiance was cozy and relaxed, making it a perfect venue for our anniversary dinner. Each dish was prepared and beautifully presented.',
-    Profile: '../../Assests/Profile2.jpg',
+    Profile: Profile2,
     Name: 'Zainab Kamaldeen',
   },
 
@@ -22,7 +25,7 @@ export const CustomerRev = [
     Title: 'One of a kind restaurant',
     Review:
       'The culinary experience at place is first to none. The atmosphere is vibrant, the food - nothing short of extraordinary. The food was the highlight of our evening. Highly recommended.',
-    Profile: '../../Assests/Profile1.jpeg',
+    Profile: Profile3,
     Name: 'Femi Kay',
   },
 ];
@@ -35,32 +38,32 @@ export const MenuData = [
       {
         Name: 'Jollof Rice',
         BasePrice: 1500,
-        Picture: '/Assests/FoodImages/JollofRice.jpg',
+        Picture: '/src/assets/FoodImages/JollofRice.jpg',
       },
       {
         Name: 'Fried Rice',
         BasePrice: 2000,
-        Picture: '/Assests/FoodImages/FriedRice.jpg',
+        Picture: '/src/assets/FoodImages/FriedRice.jpg',
       },
       {
         Name: 'Rice',
         BasePrice: 1000,
-        Picture: '/Assests/FoodImages/Rice.png',
+        Picture: '/src/assets/FoodImages/Rice.png',
       },
       {
         Name: 'Ofada Rice',
         BasePrice: 1000,
-        Picture: '/Assests/FoodImages/Ofada Rice.jpg',
+        Picture: '/src/assets/FoodImages/Ofada Rice.jpg',
       },
       {
         Name: 'Beans and Plantain',
         BasePrice: 3500,
-        Picture: '/Assests/FoodImages/BeansAndPlaintain.jpeg',
+        Picture: '/src/assets/FoodImages/BeansAndPlaintain.jpeg',
       },
       {
         Name: 'Yam Porridge',
         BasePrice: 2000,
-        Picture: '/Assests/FoodImages/YamPorradge.jpeg',
+        Picture: '/src/assets/FoodImages/YamPorradge.jpeg',
       },
     ],
   },
@@ -71,32 +74,32 @@ export const MenuData = [
       {
         Name: 'Puff-Puff',
         BasePrice: 500,
-        Picture: '/Assests/FoodImages/PuffPuff.jpg',
+        Picture: '/src/assets/FoodImages/PuffPuff.jpg',
       },
       {
         Name: 'EggRoll',
         BasePrice: 1500,
-        Picture: '/Assests/FoodImages/EggRoll.jpg',
+        Picture: '/src/assets/FoodImages/EggRoll.jpg',
       },
       {
         Name: 'FishRoll',
         BasePrice: 1500,
-        Picture: '/Assests/FoodImages/FishRoll.jpg',
+        Picture: '/src/assets/FoodImages/FishRoll.jpg',
       },
       {
         Name: 'Meat Pie',
         BasePrice: 2000,
-        Picture: '/Assests/FoodImages/Meatpie.jpg',
+        Picture: '/src/assets/FoodImages/Meatpie.jpg',
       },
       {
         Name: 'Scotch Egg',
         BasePrice: 2000,
-        Picture: '/Assests/FoodImages/Scotch Egg.jpg',
+        Picture: '/src/assets/FoodImages/Scotch Egg.jpg',
       },
       {
         Name: 'Sausage',
         BasePrice: 800,
-        Picture: '/Assests/FoodImages/Sausage.jpeg',
+        Picture: '/src/assets/FoodImages/Sausage.jpeg',
       },
     ],
   },
@@ -107,22 +110,22 @@ export const MenuData = [
       {
         Name: 'Pepper Soup',
         BasePrice: 3000,
-        Picture: '/Assests/FoodImages/PepperSoup.jpg',
+        Picture: '/src/assets/FoodImages/PepperSoup.jpg',
       },
       {
         Name: 'Crab Pepper Soup',
         BasePrice: 2700,
-        Picture: '/Assests/FoodImages/CrabPepper.jpg',
+        Picture: '/src/assets/FoodImages/CrabPepper.jpg',
       },
       {
         Name: 'Stockfish Stew',
         BasePrice: 2000,
-        Picture: '/Assests/FoodImages/StockFishStew.jpeg',
+        Picture: '/src/assets/FoodImages/StockFishStew.jpeg',
       },
       {
         Name: 'Asun-Meat',
         BasePrice: 3000,
-        Picture: '/Assests/FoodImages/Asun-meat.png',
+        Picture: '/src/assets/FoodImages/Asun-meat.png',
       },
     ],
   },
@@ -133,24 +136,23 @@ export const MenuData = [
       {
         Name: 'Zobo',
         BasePrice: 500,
-        Picture: '/Assests/FoodImages/Zobo.jpg',
+        Picture: '/src/assets/FoodImages/Zobo.jpg',
       },
       {
         Name: 'Tiger Nut',
         BasePrice: 500,
-        Picture: '/Assests/FoodImages/Tigernut.jpeg',
+        Picture: '/src/assets/FoodImages/Tigernut.jpeg',
       },
       {
         Name: 'Palm Wine',
         BasePrice: 1000,
-        Picture: '/Assests/FoodImages/Palm Wine.jpg',
+        Picture: '/src/assets/FoodImages/Palm Wine.jpg',
       },
       {
         Name: 'Kunu',
         BasePrice: 500,
-        Picture: '/Assests/FoodImages/Kunus.jpeg',
+        Picture: '/src/assets/FoodImages/Kunus.jpeg',
       },
-      
     ],
   },
   {
@@ -160,32 +162,32 @@ export const MenuData = [
       {
         Name: 'Egusi Soup',
         BasePrice: 2500,
-        Picture: '/Assests/FoodImages/Egusi Soup.jpg',
+        Picture: '/src/assets/FoodImages/Egusi Soup.jpg',
       },
       {
         Name: 'Ogbono Soup',
         BasePrice: 2500,
-        Picture: '/Assests/FoodImages/Ogbono Soup.jpg',
+        Picture: '/src/assets/FoodImages/Ogbono Soup.jpg',
       },
       {
         Name: 'Ewedu Soup',
         BasePrice: 2000,
-        Picture: '/Assests/FoodImages/Ewedu Soup.jpeg',
+        Picture: '/src/assets/FoodImages/Ewedu Soup.jpeg',
       },
       {
         Name: 'Oha Soup',
         BasePrice: 2000,
-        Picture: '/Assests/FoodImages/Oha Soup.jpg',
+        Picture: '/src/assets/FoodImages/Oha Soup.jpg',
       },
       {
         Name: 'Banga Soup',
         BasePrice: 2000,
-        Picture: '/Assests/FoodImages/Banga.jpg',
+        Picture: '/src/assets/FoodImages/Banga.jpg',
       },
       {
         Name: 'Nsala Soup',
         BasePrice: 2000,
-        Picture: '/Assests/FoodImages/Nsala.jpg',
+        Picture: '/src/assets/FoodImages/Nsala.jpg',
       },
     ],
   },
@@ -196,34 +198,34 @@ export const MenuData = [
       {
         Name: 'Semovita',
         BasePrice: 800,
-        Picture: '/Assests/FoodImages/Semovita.jpg',
+        Picture: '/src/assets/FoodImages/Semovita.jpg',
       },
       {
         Name: 'Eba',
         BasePrice: 200,
-        Picture: '/Assests/FoodImages/Eba.jpg',
+        Picture: '/src/assets/FoodImages/Eba.jpg',
       },
       {
         Name: 'Pounded Yam',
         BasePrice: 500,
-        Picture: '/Assests/FoodImages/Pounded Yam.jpg',
+        Picture: '/src/assets/FoodImages/Pounded Yam.jpg',
       },
 
       {
         Name: 'Fufu',
         BasePrice: 300,
-        Picture: '/Assests/FoodImages/Fufu.jpg',
+        Picture: '/src/assets/FoodImages/Fufu.jpg',
       },
 
       {
         Name: 'Tuwo Shinkafa',
         BasePrice: 200,
-        Picture: '/Assests/FoodImages/TuwoShinkafa.jpg',
+        Picture: '/src/assets/FoodImages/TuwoShinkafa.jpg',
       },
       {
         Name: 'Amala',
         BasePrice: 200,
-        Picture: '/Assests/FoodImages/Amala.jpg',
+        Picture: '/src/assets/FoodImages/Amala.jpg',
       },
     ],
   },
@@ -235,24 +237,23 @@ export const MenuData = [
       {
         Name: 'Chicken',
         BasePrice: 1000,
-        Picture: '/Assests/FoodImages/Fried-Chicken.jpg',
+        Picture: '/src/assets/FoodImages/Fried-Chicken.jpg',
       },
       {
         Name: 'Fish',
         BasePrice: 1200,
-        Picture: '/Assests/FoodImages/Fried-Fish.jpg',
+        Picture: '/src/assets/FoodImages/Fried-Fish.jpg',
       },
       {
         Name: 'Beef',
         BasePrice: 800,
-        Picture: '/Assests/FoodImages/Beef.jpg',
+        Picture: '/src/assets/FoodImages/Beef.jpg',
       },
       {
         Name: 'Shrimp',
         BasePrice: 800,
-        Picture: '/Assests/FoodImages/Shrimps.jpg',
+        Picture: '/src/assets/FoodImages/Shrimps.jpg',
       },
     ],
   },
 ];
-

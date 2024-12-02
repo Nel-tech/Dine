@@ -5,7 +5,7 @@ function AboutHeroSection() {
       <section>
         <figure className="relative mx-auto flex justify-center self-center items-center">
           <img
-            src="../../../../Assests/HeroBackground.jpg"
+            src="/src/assets/HeroBackground.jpg"
             className="w-[34rem] rounded-lg  mt-[2rem] xs:w-[18rem] sm:w-[22rem]"
             alt="Food Image"
           />

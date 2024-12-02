@@ -16,7 +16,7 @@ function Review() {
             </p>
             <div className="flex gap-3 self-center items-center content-center pt-[.7rem]">
               <img
-                src="../../Assests/Profile1.jpg"
+                src="/src/assets/Profile1.jpg"
                 alt=""
                 className="w-[50px] h-[50px] rounded-full object-cover"
               />
@@ -34,7 +34,7 @@ function Review() {
 
             <div className="flex gap-3 self-center items-center content-center pt-[.7rem]">
               <img
-                src="../../Assests/Profile2.jpg"
+                src="/src/assets/Profile2.jpg"
                 alt=""
                className="w-[50px] h-[50px] rounded-full object-cover"
               />
@@ -52,7 +52,7 @@ function Review() {
             <div className="flex gap-3 self-center items-center content-center pt-[.7rem]">
 
             <img
-              src="../../Assests/Profile3.jpeg"
+              src="/src/assets/Profile3.jpeg"
               alt=""
              className="w-[50px] h-[50px] rounded-full object-cover"
             />
