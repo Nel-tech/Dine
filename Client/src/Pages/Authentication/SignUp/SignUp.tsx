@@ -1,38 +1,48 @@
 import { useState } from 'react';
 import NavForm from '../../../Components/NavForm';
 import { signup } from '../../../Services/Auth/Authservice';
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate } from 'react-router-dom';
+import { EyeIcon, EyeSlashIcon } from '@heroicons/react/16/solid';
 export default function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setConfirmPassword] = useState('');
   const [isSignup] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
+   const [ConfirmPassword, ConfirmSetPassword] = useState(false);
 
+  const togglePassword = () => {
+    setShowPassword(!showPassword);
+  };
 
-const Navigate = useNavigate()
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+   const ToggleConfirmPassword = () => {
+    ConfirmSetPassword(!ConfirmPassword);
+  };
 
-  if (password !== passwordConfirm) {
-    window.alert('Passwords do not match');
-    return;
-  }
+  const Navigate = useNavigate();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-  try {
-    if (isSignup) {      
-      await signup(email, password, passwordConfirm);
-      window.alert('Account successfully created');
-      Navigate('/menu');
-    } 
-  } catch (error) {
-    console.error('Error occurred:', error);
-    window.alert(error instanceof Error ? error.message : "An error occurred. Please try again.");
-  }
-};
+    if (password !== passwordConfirm) {
+      window.alert('Passwords do not match');
+      return;
+    }
 
-
-
+    try {
+      if (isSignup) {
+        await signup(email, password, passwordConfirm);
+        window.alert('Account successfully created');
+        Navigate('/menu');
+      }
+    } catch (error) {
+      console.error('Error occurred:', error);
+      window.alert(
+        error instanceof Error
+          ? error.message
+          : 'An error occurred. Please try again.'
+      );
+    }
+  };
 
   return (
     <section>
@@ -44,8 +54,6 @@ const handleSubmit = async (e: React.FormEvent) => {
           </h2>
 
           <form onSubmit={handleSubmit}>
-            
-
             <div className="mb-6">
               <label className="mb-1 block text-sm font-medium text-gray-800">
                 Email address
@@ -61,7 +69,7 @@ const handleSubmit = async (e: React.FormEvent) => {
               />
             </div>
 
-            <div className="mb-6">
+            <div className="relative mb-6">
               <label
                 htmlFor="password"
                 className="mb-1 block text-sm font-medium text-gray-800"
@@ -70,16 +78,28 @@ const handleSubmit = async (e: React.FormEvent) => {
               </label>
               <input
                 id="password"
-                name="password"
-               type="password"
+                name="new-password"
+                type={showPassword ? 'text' : 'password'}
                 required
-                autoComplete="current-password"
+                autoComplete="new-password"
                 onChange={(e) => setPassword(e.target.value)}
                 className="block w-full rounded border border-gray-300 px-3 py-2 text-gray-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
+
+              <button
+                type="button"
+                onClick={togglePassword}
+                className="absolute right-3 top-1/2 text-black"
+              >
+                {showPassword ? (
+                  <EyeSlashIcon className="h-5 w-5" />
+                ) : (
+                  <EyeIcon className="h-5 w-5" />
+                )}
+              </button>
             </div>
 
-            <div className="mb-6">
+            <div className="mb-6 relative">
               <label
                 htmlFor="password"
                 className="mb-1 block text-sm font-medium text-gray-800"
@@ -87,17 +107,26 @@ const handleSubmit = async (e: React.FormEvent) => {
                 Confirm Password
               </label>
               <input
-                id="password"
-                name="password"
-              type="password"
+               id="confirm-password"
+                  name="confirm-password"
+                type={ConfirmPassword ? 'text' : 'password'}
                 required
-                autoComplete="current-password"
+                autoComplete="new-password"
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 className="block w-full rounded border border-gray-300 px-3 py-2 text-gray-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
+              <button
+                type="button"
+                onClick={ToggleConfirmPassword}
+                className="absolute right-3 top-1/2 text-black"
+              >
+                {ConfirmPassword ? (
+                  <EyeSlashIcon className="h-5 w-5" />
+                ) : (
+                  <EyeIcon className="h-5 w-5" />
+                )}
+              </button>
             </div>
-
-            
 
             <button
               type="submit"
@@ -105,9 +134,6 @@ const handleSubmit = async (e: React.FormEvent) => {
             >
               Create
             </button>
-
-    
-           
           </form>
 
           <p className="mt-6 text-center text-sm text-gray-600">

@@ -6,10 +6,10 @@ import { reserveForm } from '../../Services/Cart/CartServices';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
-
 export type ReservationFormProps = {
   name: string;
   date: string;
+  time: string;
   people: number;
 };
 
@@ -19,10 +19,11 @@ function ReservationForm() {
   const [userEmail, setUserEmail] = useState('');
   const [Reserve, setReservation] = useState<ReservationFormProps>({
     name: '',
+    time: '',
     date: '',
     people: 0,
   });
-useEffect(() => {
+  useEffect(() => {
     const auth = getAuth();
     const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
       setUserId(user?.uid || null);
@@ -50,6 +51,7 @@ useEffect(() => {
     }
   };
 
+
   const handlePeople = (e: React.ChangeEvent<HTMLInputElement>) => {
     const count = Number(e.target.value);
     if (count < 0) {
@@ -63,12 +65,22 @@ useEffect(() => {
     e.preventDefault();
 
     try {
-      await reserveForm(userId, Reserve); // Passing reserve object as the second argument
+      if (!userId) {
+        alert('You are not authenticated yet');
+        return;
+      }
+
+      if (!Reserve) {
+        alert('Reservation details are missing');
+        return;
+      }
+
+      await reserveForm(userId, Reserve);
       alert('Reservation confirmed!');
-      Navigate('/summary');
+      Navigate('/summary'); // Navigate only after successful reservation
     } catch (error) {
       console.error('Error confirming reservation:', error);
-      alert('There was an error confirming your reservation.');
+      alert('Failed to confirm the reservation. Please try again.');
     }
   };
 
@@ -137,6 +149,24 @@ useEffect(() => {
               />
             </div>
 
+            {/* Time Input */}
+            <div className="mb-6 px-[2rem]">
+              <label htmlFor="time">
+                Pick A Time <span className='text-[.8rem]'>⚠️(9:00AM - 10:00PM)</span>
+              </label>
+              <div className="relative">
+                <input
+                  type="time"
+                  name="time"
+                  id="time"
+                  required
+                  value={Reserve.time}
+                  onChange={handleChange}
+                  className="block w-full rounded border border-gray-300 px-3 py-1 text-gray-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+                
+              </div>
+            </div>
             {/* Number of People */}
             <div className="mb-6 px-[2rem]">
               <label htmlFor="people">Number Of People</label>
@@ -163,7 +193,7 @@ useEffect(() => {
           </form>
         </article>
       </section>
-     <BaseFooter/>
+      <BaseFooter />
     </main>
   );
 }
