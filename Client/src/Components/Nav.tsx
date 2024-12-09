@@ -52,6 +52,16 @@ function Nav() {
                 ABOUT
               </Link>
             </li>
+
+            <li>
+              <Link
+                to="/contact"
+                className="transition-colors duration-300 hover:text-[#AD343E]"
+                onClick={() => setIsOpen(false)} // Close menu on click
+              >
+                CONTACT
+              </Link>
+            </li>
           </ul>
 
           {/* Buttons */}

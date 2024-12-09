@@ -8,6 +8,7 @@ import {
 import { auth } from '../Auth/config';
 import { FirebaseError } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
+import { sendEmail } from '../../Pages/Email/Email';
 
 export const signup = async (
   email: string,
@@ -25,6 +26,14 @@ export const signup = async (
       password
     );
     console.log('User signed up:', userCredential.user);
+
+    const userEmail = userCredential.user.email;
+    if (userEmail) {
+      await sendEmail(userEmail);
+      console.log('Welcome email sent successfully');
+    } else {
+      throw new Error('User email is null');
+    }
   } catch (error: unknown) {
     if (error instanceof FirebaseError) {
       if (error.code === 'auth/email-already-in-use') {
@@ -33,6 +42,7 @@ export const signup = async (
       console.error('Error signing up:', error.message);
     } else {
       console.error('Unknown error:', error);
+      throw error; // Rethrow the error to handle it further upstream if needed.
     }
   }
 };
@@ -76,11 +86,11 @@ export const signout = async (): Promise<void> => {
 };
 
 export const getCurrentUser = async () => {
-    const auth = getAuth()
-    const user = auth.currentUser
-  if(user) {
-  return user.email
-  }else{
-    return null
+  const auth = getAuth();
+  const user = auth.currentUser;
+  if (user) {
+    return user.email;
+  } else {
+    return null;
   }
 };

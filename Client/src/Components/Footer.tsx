@@ -8,7 +8,7 @@ function Footer() {
   return (
     <footer className="mt-[7rem]">
       <section className="bg-[#2b2b2b] w-full ">
-        <main className="container text-[#8c8c8c] flex justify-between items-center pt-[2rem] xs:flex-col sm:flex-col md:flex-col">
+        <main className="container text-white flex justify-between items-center pt-[2rem] xs:flex-col sm:flex-col md:flex-col">
           <ul className='md:pb-[1.8rem]'>
             <li className='text-[1.5rem] xs:hidden sm:hidden'>DINE</li>
           </ul>
@@ -36,7 +36,7 @@ function Footer() {
           </ul>
         </main>
 
-        <hr className='mt-[2rem] container border-[.1px]  border-[#DBDFD0] xs:hidden sm:hidden ' />
+        <hr className='mt-[2rem] container border-[.1px] opacity-30  border-[#DBDFD0] xs:hidden sm:hidden ' />
         <p className='text-white text-center mt-[1rem]'>&copy; {result} Dine Restaurant</p>
       </section>
     </footer>
