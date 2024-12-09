@@ -2,6 +2,7 @@ export const sendEmail = async (recipientEmail: string) => {
   const apiKey = import.meta.env.VITE_BREVO_API;
   const url = 'https://api.brevo.com/v3/smtp/email';
 
+
   const emailData = {
     sender: { email: import.meta.env.VITE_EMAIL, name: 'Dine Restaurant' },
     to: [{ email: recipientEmail }],

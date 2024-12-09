@@ -126,8 +126,8 @@ function Menu() {
       </header>
 
       <main className="mt-[6rem] ">
-      <div className="relative mb-8 overflow-hidden px-4">
-  <div className=" flex items-center justify-center gap-4 overflow-x-auto whitespace-nowrap no-scrollbar">
+     <div className="relative mb-8 overflow-x-auto overflow-y-hidden px-4">
+  <div className="flex items-center justify-center gap-4 whitespace-nowrap">
     {/* "All" Button */}
     <button
       onClick={() => setCategory('')}
@@ -152,6 +152,7 @@ function Menu() {
     ))}
   </div>
 </div>
+
 
 
 
