@@ -95,14 +95,14 @@ function Summary() {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex justify-center items-center">
+        {/* <div className="flex justify-center items-center">
           <button
             type="button"
             className="px-8 py-3 bg-[#AD343E] text-white text-lg font-semibold rounded-lg hover:bg-[#9A2D34] transition-all duration-200"
           >
             Confirm Reservation
           </button>
-        </div>
+        </div> */}
       </div>
 
       <BaseFooter />
