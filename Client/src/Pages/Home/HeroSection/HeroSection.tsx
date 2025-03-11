@@ -1,5 +1,4 @@
-import Button from '../../../Components/Button';
-import { Link } from 'react-router-dom';
+
 function HeroSection() {
   return (
     <section className="relative h-[100vh] w-full bg-hero-section bg-cover bg-center bg-no-repeat xs:bg-Mobile-Hero-section sm:bg-Mobile-Hero-section">
@@ -13,26 +12,7 @@ function HeroSection() {
           </p>
         </div>
 
-        <div className="pt-[1rem]">
-          <Link
-            to="/signup"
-            onClick={() => {
-              window.alert(
-                'You have to authenticate first before you can have access to our menu'
-              );
-            }}
-          >
-            <Button
-            className='none'
-            border='none'
-              name="Explore Menu"
-              textColor="text-white"
-              radius="rounded-full"
-              padding="px-8 py-3"
-              backgroundColor="bg-[#AD343E] hover:bg-[#AD343E] transform hover:scale-105 transition-all duration-200"
-            />
-          </Link>
-        </div>
+       
       </main>
     </section>
   );
