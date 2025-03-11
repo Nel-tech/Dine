@@ -1,5 +1,5 @@
 import '../index.css';
-import Button from '../Components/Button';
+import {Button} from '../Components/ui/button';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -96,28 +96,22 @@ function Nav() {
               </>
             ) : (
               <>
-                <Link to="/signup" onClick={() => setIsOpen(false)}>
-                  <Button
-                    border=''
-                    name="Sign up"
-                    backgroundColor="bg-[#AD343E]"
-                    textColor="text-white"
-                    padding="px-6 py-2"
-                    radius="rounded-full"
-                    className="transition duration-300 ease-in-out transform hover:scale-105 hover:bg-[#9E2A33] hover:shadow-lg"
-                  />
-                </Link>
-                <Link to="/signin" onClick={() => setIsOpen(false)}>
-                  <Button
-                    name="Login"
-                    backgroundColor=""
-                    textColor="text-[#AD343E]"
-                    border="border border-[#AD343E]"
-                    padding="px-6 py-2"
-                    radius="rounded-full"
-                    className="transition duration-300 ease-in-out transform hover:scale-105 hover:bg-[#AD343E] hover:text-white hover:border-transparent hover:shadow-lg"
-                  />
-                </Link>
+               <Link to="/signup" onClick={() => setIsOpen(false)}>
+  <Button 
+    className="rounded-full bg-[#AD343E] text-white px-6 py-2 transition duration-300 ease-in-out transform hover:scale-105 hover:bg-[#9E2A33] hover:shadow-lg"
+  >
+    Sign Up
+  </Button>
+</Link>
+
+<Link to="/signin" onClick={() => setIsOpen(false)}>
+  <Button 
+    variant="outline" 
+    className="rounded-full border-[#AD343E] text-[#AD343E] px-6 py-2 transition duration-300 ease-in-out transform hover:scale-105 hover:bg-[#AD343E] hover:text-white hover:border-transparent hover:shadow-lg"
+  >
+    Login
+  </Button>
+</Link>
               </>
             )}
           </div>
