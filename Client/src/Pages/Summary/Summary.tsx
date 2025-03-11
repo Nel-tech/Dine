@@ -2,40 +2,32 @@ import { useState, useEffect } from "react";
 import NavForm from "../../Components/NavForm";
 import BaseFooter from "../../Components/BaseFooter";
 import { getCartItems, getReservationForm } from "../../Services/Cart/CartServices";
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { Dish } from "../Menu/Menu";
+import PaystackPayment from '../../Components/Payments';
+import { useNavigate } from "react-router-dom";
+import { useAuth } from '../../Context/AuthContext';
 
 function Summary() {
   const [cartItems, setCartItems] = useState<Dish[]>([]);
-  const [userId, setUserId] = useState<string | null>(null);
   const [summary, setSummary] = useState({
     name: '',
     date: '',
     people: 0,
   });
 
-  // Listen for user authentication state change
-  useEffect(() => {
-    const auth = getAuth();
-    const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
-      setUserId(user?.uid || null);
-    });
+  const { user } = useAuth(); // Get authenticated user
+  const navigate = useNavigate();
+  const email = user?.email || ""; // Ensure email is set correctly
 
-    return () => unsubscribeAuth();
-  }, []);
-
-  // Fetch cart items and reservation summary when userId is available
   useEffect(() => {
-    if (!userId) return; // If userId is null, do nothing
+    if (!user) return; // Ensure user is authenticated
 
     const fetchData = async () => {
       try {
-        // Fetch cart items
-        const items = await getCartItems(userId);
+        const items = await getCartItems(user.uid); // Use `user.uid`
         setCartItems(items);
 
-        // Fetch reservation summary
-        const result = await getReservationForm(userId);
+        const result = await getReservationForm(user.uid);
         if (result) {
           setSummary(result);
         }
@@ -45,7 +37,13 @@ function Summary() {
     };
 
     fetchData();
-  }, [userId]);
+  }, [user]);
+
+  const totalAmount = cartItems.reduce((total, item) => total + item.BasePrice, 0);
+
+  const handlePaymentSuccess = (paymentRef: string) => {
+    navigate(`/receipt/${paymentRef}`);
+  };
 
   return (
     <section className="bg-gray-100 min-h-screen">
@@ -58,15 +56,23 @@ function Summary() {
         {/* Reservation Details */}
         <div className="mb-6 p-6 bg-gray-50 rounded-lg shadow-md">
           <h3 className="text-2xl font-semibold text-gray-800 mb-4">Reservation Details</h3>
-          <p className="text-lg text-gray-600">Date: <span className="font-medium text-gray-900">{summary.date}</span></p>
-         
-          <p className="text-lg text-gray-600">Number of People: <span className="font-medium text-gray-900">{summary.people}</span></p>
+          <p className="text-lg text-gray-600">
+            Date: <span className="font-medium text-gray-900">{summary.date}</span>
+          </p>
+          <p className="text-lg text-gray-600">
+            Number of People: <span className="font-medium text-gray-900">{summary.people}</span>
+          </p>
         </div>
 
         {/* User Details */}
         <div className="mb-6 p-6 bg-gray-50 rounded-lg shadow-md">
           <h3 className="text-2xl font-semibold text-gray-800 mb-4">Guest Information</h3>
-          <p className="text-lg text-gray-600">Name: <span className="font-medium text-gray-900">{summary.name}</span></p>
+          <p className="text-lg text-gray-600">
+            Name: <span className="font-medium text-gray-900">{summary.name}</span>
+          </p>
+          <p className="text-lg text-gray-600">
+            Email: <span className="font-medium text-gray-900">{email}</span>
+          </p>
         </div>
 
         {/* Cart Items */}
@@ -75,9 +81,9 @@ function Summary() {
           {cartItems.length > 0 ? (
             <ul className="space-y-2">
               {cartItems.map(item => (
-                <li key={item.Name} className=" flex justify-between self-center items-center ">
-                  <h1 className="text-gray-600 text-lg">{item.Name}</h1> 
-                  <p className="font-bold text-[#9A2D34] text-xl"> ₦{item.BasePrice}</p>
+                <li key={item.Name} className="flex justify-between self-center items-center">
+                  <h1 className="text-gray-600 text-lg">{item.Name}</h1>
+                  <p className="font-bold text-[#9A2D34] text-xl">₦{item.BasePrice}</p>
                 </li>
               ))}
             </ul>
@@ -89,20 +95,28 @@ function Summary() {
         {/* Total Price */}
         <div className="mb-6 p-6 bg-gray-50 rounded-lg shadow-md flex justify-between items-center">
           <h3 className="text-2xl font-semibold text-gray-800">Total Price</h3>
-          <p className="text-xl font-bold text-[#9A2D34]">
-            ₦{cartItems.reduce((total, item) => total + item.BasePrice, 0)}
-          </p>
+          <p className="text-xl font-bold text-[#9A2D34]">₦{totalAmount}</p>
         </div>
 
-        {/* Action Buttons */}
-        {/* <div className="flex justify-center items-center">
-          <button
-            type="button"
-            className="px-8 py-3 bg-[#AD343E] text-white text-lg font-semibold rounded-lg hover:bg-[#9A2D34] transition-all duration-200"
-          >
-            Confirm Reservation
-          </button>
-        </div> */}
+        {/* Payment Button */}
+        <div className="flex justify-center items-center">
+          {user?.uid ? ( // Use `user?.uid`
+            <PaystackPayment
+              amount={totalAmount}
+              email={email}
+              userId={user.uid} // Corrected: `user.uid`
+              onSuccess={handlePaymentSuccess}
+            />
+          ) : (
+            <button
+              type="button"
+              className="px-8 py-3 bg-gray-400 text-white text-lg font-semibold rounded-lg cursor-not-allowed"
+              disabled
+            >
+              Please log in to make payment
+            </button>
+          )}
+        </div>
       </div>
 
       <BaseFooter />
