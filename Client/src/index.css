@@ -2,21 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-
-    @layer base {
+@layer base {
   html {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
   }
- /* .LogoFont {
+  /* .LogoFont {
     font-family: "Rubik Doodle Triangles", system-ui;
   } */
 
+  * {
+    @apply border-border;
+  }
 
-  .container{
-    @apply max-w-[1024px] mx-auto
+  body {
+    @apply bg-background text-foreground;
   }
 }
 
-
-
-
+@layer components {
+  .container {
+    @apply mx-auto max-w-[1024px];
+  }
+}
