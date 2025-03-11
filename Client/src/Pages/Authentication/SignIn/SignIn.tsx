@@ -2,6 +2,8 @@ import NavForm from '../../../Components/NavForm';
 import { signin } from '../../../Services/Auth/Authservice.ts';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+
+
 export default function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -9,6 +11,9 @@ export default function SignIn() {
   const [isLogin] = useState(true);
   const Navigate = useNavigate()
 
+
+
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -16,7 +21,7 @@ export default function SignIn() {
       if (isLogin) {
         await signin(email, password);
         window.alert('Login Successfully')
-        Navigate('/summary')
+        Navigate('/menu')
 
       }
     } catch (error) {
@@ -80,12 +85,15 @@ export default function SignIn() {
               </div>
             </div>
 
+
+
             <button
               type="submit"
               className="w-full rounded bg-[#AD343E] px-4 py-2 text-sm font-medium text-white hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
               Sign in
             </button>
+
           </form>
 
           <p className="mt-6 text-center text-sm text-gray-600">
