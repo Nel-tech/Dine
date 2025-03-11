@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import NavForm from '../../Components/NavForm';
 import BaseFooter from '../../Components/BaseFooter';
-import { getCurrentUser } from '../../Services/Auth/Authservice'; // Fetch current user email
 import { reserveForm } from '../../Services/Cart/CartServices';
 import { useNavigate } from 'react-router-dom';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { useAuth } from '@/Context/AuthContext';
+import { toast } from "sonner";
+
 
 export type ReservationFormProps = {
   name: string;
@@ -14,8 +15,7 @@ export type ReservationFormProps = {
 };
 
 function ReservationForm() {
-  const Navigate = useNavigate();
-  const [userId, setUserId] = useState<string | null>(null);
+  const navigate = useNavigate();
   const [userEmail, setUserEmail] = useState('');
   const [Reserve, setReservation] = useState<ReservationFormProps>({
     name: '',
@@ -23,14 +23,15 @@ function ReservationForm() {
     date: '',
     people: 0,
   });
-  useEffect(() => {
-    const auth = getAuth();
-    const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
-      setUserId(user?.uid || null);
-    });
 
-    return () => unsubscribeAuth();
-  }, []);
+  const {user} = useAuth()
+  useEffect(() => {
+    if (user) {
+      setUserEmail(user.email || '');
+    }
+  }, [user]); // Re-run when `user` changes
+
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setReservation((prev) => ({
@@ -45,54 +46,60 @@ function ReservationForm() {
     currentDate.setHours(0, 0, 0, 0);
 
     if (selectedDate < currentDate) {
-      window.alert('Please select a current or future date.');
+      toast.info('Please select a current or future date.');
     } else {
-      handleChange(e);
+      setReservation((prev) => ({
+        ...prev,
+        date: e.target.value,
+      }));
     }
   };
+
+
+  
 
 
   const handlePeople = (e: React.ChangeEvent<HTMLInputElement>) => {
     const count = Number(e.target.value);
-    if (count < 0) {
-      window.alert('Invalid Number');
+    if (count <= 0) {
+      toast.info('Number of people must be at least 1');
     } else {
-      handleChange(e);
+      setReservation((prev) => ({
+        ...prev,
+        people: count,
+      }));
     }
   };
-
-  const handleForm = async (e: React.FormEvent<HTMLFormElement>) => {
+   const handleForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (!user) {
+      toast.info('You are not authenticated yet');
+      return;
+    }
+
+    if (!Reserve.name || !Reserve.date || !Reserve.time || Reserve.people <= 0) {
+       toast.info('Please fill in all reservation details.');
+      return;
+    }
+
     try {
-      if (!userId) {
-        alert('You are not authenticated yet');
-        return;
-      }
-
-      if (!Reserve) {
-        alert('Reservation details are missing');
-        return;
-      }
-
-      await reserveForm(userId, Reserve);
-      alert('Reservation confirmed!');
-      Navigate('/summary'); // Navigate only after successful reservation
+      await reserveForm(user.uid, Reserve);
+     toast.info('Reservation confirmed!');
+      navigate('/summary'); // Use lowercase `navigate`
     } catch (error) {
       console.error('Error confirming reservation:', error);
-      alert('Failed to confirm the reservation. Please try again.');
+      toast.info('Failed to confirm the reservation. Please try again.');
     }
   };
 
-  useEffect(() => {
-    const fetchEmail = async () => {
-      const email = await getCurrentUser();
-      if (email) {
-        setUserEmail(email);
-      }
-    };
-    fetchEmail();
-  }, []);
+
+ useEffect(() => {
+  if (user?.email) {
+    setUserEmail(user.email);
+  }
+}, [user]); 
+
 
   return (
     <main>

@@ -5,7 +5,8 @@ import { addToCart, removeFromCart } from '../../Services/Cart/CartServices';
 import { onSnapshot, collection } from 'firebase/firestore';
 import { db } from '../../Services/Auth/config';
 import { Link } from 'react-router-dom';
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import {useAuth} from '../../Context/AuthContext'
+import {toast} from 'sonner'
 
 export type Dish = {
   Name: string;
@@ -18,27 +19,19 @@ function Menu() {
   const [cartItems, setCartItems] = useState<Dish[]>([]);
   const [total, setTotal] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
-  const [userId, setUserId] = useState<string | null>(null);
+  // const [userId, setUserId] = useState<string | null>(null);
 
   const filteredMenu = Category
     ? MenuData.filter((menu) => menu.Category === Category)
     : MenuData;
 
   // Track authentication state
-  useEffect(() => {
-    const auth = getAuth();
-    const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
-      setUserId(user?.uid || null);
-    });
-
-    return () => unsubscribeAuth();
-  }, []);
-
+ const {user} = useAuth()
   // Set up real-time listener for cart items
   useEffect(() => {
-    if (!userId) return; // Only set up the listener if a user is authenticated
+    if (!user) return; // Only set up the listener if a user is authenticated
 
-    const cartRef = collection(db, `users/${userId}/cart`);
+    const cartRef = collection(db, `users/${user.uid}/cart`);
     const unsubscribe = onSnapshot(cartRef, (snapshot) => {
       const items = snapshot.docs.map((doc) => {
         const data = doc.data();
@@ -53,49 +46,46 @@ function Menu() {
     });
 
     return () => unsubscribe();
-  }, [userId]);
+  }, [user]);
 
   // Add item to cart
-  const handleAddToCart = async (dish: Dish) => {
-    if (!userId) {
-      window.alert('You need to log in to add items to the cart.');
+ const handleAddToCart = async (dish: Dish) => {
+    if (!user) {
+    toast.error("You need to log in to add items to the cart.");
       return;
     }
 
-    const isItemInCart = cartItems.some((item) => item.Name === dish.Name);
-    if (isItemInCart) {
-      window.alert(`${dish.Name} is already in your cart.`);
+    if (cartItems.some((item) => item.Name === dish.Name)) {
+     toast.info(`${dish.Name} is already in your cart.`);
       return;
     }
-
-    const itemId = dish.Name;
-    const itemData = {
-      Name: dish.Name,
-      BasePrice: dish.BasePrice,
-      Picture: dish.Picture,
-    };
 
     try {
-      await addToCart(userId, itemId, itemData);
-      window.alert(`${dish.Name} added to the cart`);
+      await addToCart(user.uid, dish.Name, {
+        Name: dish.Name,
+        BasePrice: dish.BasePrice,
+        Picture: dish.Picture,
+      });
+     toast.success(`${dish.Name} added to the cart.`);
     } catch (error) {
-      console.error('Error adding to cart:', error);
+      console.error("Error adding to cart:", error);
+      toast.error("Failed to add item to the cart.")
     }
   };
 
   // Remove item from cart
-  const removeCart = async (dish: Dish) => {
-    if (!userId) {
-      window.alert('You need to log in to remove items from the cart.');
+   const removeCart = async (dish: Dish) => {
+    if (!user) {
+     toast.error("You need to log in to remove items from the cart.");
       return;
     }
 
-    const itemId = dish.Name;
     try {
-      await removeFromCart(userId, itemId);
-      window.alert(`${dish.Name} removed from the cart`);
+      await removeFromCart(user.uid, dish.Name);
+      toast.success(`${dish.Name} removed from the cart.`);
     } catch (error) {
-      console.error('Error removing item:', error);
+      console.error("Error removing item:", error);
+     toast.error("Failed to remove item from the cart.");
     }
   };
 ;
@@ -164,7 +154,7 @@ function Menu() {
                 {menu.Dishes.map((dish) => (
                   <div
                     key={dish.Name}
-                    className="flex w-[30%] flex-col items-center rounded-lg border p-4 shadow-md xs:w-[100%] sm:w-[100%]"
+                    className="flex w-[30%] flex-col items-center rounded-lg  p-4 shadow-md xs:w-[100%] sm:w-[100%]"
                   >
                     <img
                       src={dish.Picture}
