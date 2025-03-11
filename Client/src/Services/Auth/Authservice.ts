@@ -7,8 +7,9 @@ import {
 } from 'firebase/auth';
 import { auth } from '../Auth/config';
 import { FirebaseError } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
 import { sendEmail } from '../../Pages/Email/Email';
+import { getDoc,setDoc,doc } from 'firebase/firestore';
+import { db } from '../Auth/config';
 
 export const signup = async (
   email: string,
@@ -27,6 +28,15 @@ export const signup = async (
     );
     console.log('User signed up:', userCredential.user);
 
+    // Store user role as "user" in Firestore (no admin sign-ups)
+    const userRef = doc(db, 'users', userCredential.user.uid);
+    await setDoc(userRef, {
+      email,
+      role: 'user', // Only allow "user" role on signup
+      createdAt: new Date(),
+    });
+
+    // Send welcome email
     const userEmail = userCredential.user.email;
     if (userEmail) {
       await sendEmail(userEmail);
@@ -42,55 +52,67 @@ export const signup = async (
       console.error('Error signing up:', error.message);
     } else {
       console.error('Unknown error:', error);
-      throw error; // Rethrow the error to handle it further upstream if needed.
+      throw error;
     }
   }
 };
 
-// Sign in function
+
 export const signin = async (
   email: string,
   password: string
-): Promise<void> => {
+): Promise<{ role: string; email: string } | null> => {
   try {
     const userCredential = await signInWithEmailAndPassword(
       auth,
       email,
       password
     );
-    console.log('User signed in:', userCredential.user);
-  } catch (error) {
-    if (error instanceof FirebaseError) {
-      if (error.code === 'auth/invalid-credential') {
-        throw new Error('Invalid Email or password.');
+    const user = userCredential.user;
+
+    // Fetch user role from Firestore
+    const userRef = doc(db, 'users', user.uid);
+    const userSnap = await getDoc(userRef);
+
+    if (userSnap.exists()) {
+      const userData = userSnap.data();
+      console.log('User Role:', userData.role);
+
+      // If the user is not an admin and tries to access an admin route, log them out
+      if (userData.role === 'admin') {
+        console.log('Admin logged in:', userData.email);
+      } else {
+        console.log('Regular user logged in:', userData.email);
       }
-      console.error('Error signing up:', error.message);
+
+      return {
+        role: userData.role,
+        email: userData.email,
+      };
     } else {
-      console.error('Unknown error:', error);
+      throw new Error('User data not found');
     }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
+    console.error('Error signing in:', error.message);
+
+    if (error.code === 'auth/invalid-credential') {
+      throw new Error('Invalid email or password.');
+    }
+
+    return null;
   }
 };
+
+
 
 // Sign out function
 export const signout = async (): Promise<void> => {
   try {
     await signOut(auth);
-    console.log('User signed out');
-  } catch (error) {
-    if (error instanceof FirebaseError) {
-      console.error('Error signing up:', error.message);
-    } else {
-      console.error('Unknown error:', error);
-    }
-  }
-};
-
-export const getCurrentUser = async () => {
-  const auth = getAuth();
-  const user = auth.currentUser;
-  if (user) {
-    return user.email;
-  } else {
-    return null;
+    console.log('User signed out successfully');
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
+    console.error('Error signing out:', error.message || error);
   }
 };
