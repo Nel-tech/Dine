@@ -1,38 +1,53 @@
 import NavForm from '../../../Components/NavForm';
-import { signin } from '../../../Services/Auth/Authservice.ts';
+import { signin } from '../../../Services/Auth/Authservice';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-
+import {toast} from 'sonner'
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const [isLogin] = useState(true);
+ 
   const Navigate = useNavigate()
 
 
 
   
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+   
 
-    try {
-      if (isLogin) {
-        await signin(email, password);
-        window.alert('Login Successfully')
-        Navigate('/menu')
+  try {
+    if (isLogin) {
+      const userInfo = await signin(email, password);
+    
 
+
+      if (!userInfo) {
+        throw new Error("Login failed, user info not retrieved.");
       }
-    } catch (error) {
-      console.error('Error occurred:', error);
-      window.alert(
-        error instanceof Error
-          ? error.message
-          : 'An error occurred. Please try again.'
-      );
+
+      toast.success("Login Successfully");
+
+      console.log("User role detected:", userInfo.role);
+
+      if (userInfo.role === "admin") {
+        Navigate("/admin/dashboard");
+      } else if (userInfo.role === "user") {
+        Navigate("/menu");
+      } else {
+        console.error("Unknown role:", userInfo.role);
+        Navigate("/");
+      }
     }
-  };
+  } catch (error) {
+    console.error("Error occurred:", error);
+    toast.error(error instanceof Error ? error.message : "An error occurred. Please try again.");
+  }
+};
+
+
   return (
     <section>
       <NavForm />
@@ -89,7 +104,7 @@ export default function SignIn() {
 
             <button
               type="submit"
-              className="w-full rounded bg-[#AD343E] px-4 py-2 text-sm font-medium text-white hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full rounded bg-[#AD343E] px-4 py-2 text-sm: font-medium text-white hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
               Sign in
             </button>

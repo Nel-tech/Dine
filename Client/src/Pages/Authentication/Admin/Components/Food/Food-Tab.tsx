@@ -1,114 +1,48 @@
 "use client"
 
-import { useState } from "react"
-import { MoreVertical } from "lucide-react"
-import { Button } from "../../../../../Components/ui/button"
-import { Badge } from  "../../../../../Components/ui/badge"
-import { Input } from "../../../../../Components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../../../../Components/ui/select"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../../../../../Components/ui/table"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "../../../../../Components/ui/dropdown-menu"
+import { useState, useEffect } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { Badge } from "../../../../../Components/ui/badge";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../../../../../Components/ui/table";
 
-// Sample data
-const foodItems = [
-  {
-    id: "FOOD-001",
-    name: "Chicken Burger",
-    category: "Burgers",
-    price: 12.99,
-    description: "Juicy chicken patty with lettuce, tomato, and special sauce",
-    image: "/placeholder.svg?height=80&width=80",
-  },
-  {
-    id: "FOOD-002",
-    name: "Veggie Pizza",
-    category: "Pizza",
-    price: 18.5,
-    description: "Fresh vegetables on a thin crust with mozzarella cheese",
-    image: "/placeholder.svg?height=80&width=80",
-  },
-  {
-    id: "FOOD-003",
-    name: "Steak",
-    category: "Main Course",
-    price: 29.99,
-    description: "Premium cut steak cooked to perfection",
-    image: "/placeholder.svg?height=80&width=80",
-  },
-  {
-    id: "FOOD-004",
-    name: "Sushi Platter",
-    category: "Japanese",
-    price: 45.0,
-    description: "Assorted sushi with fresh fish and vegetables",
-    image: "/placeholder.svg?height=80&width=80",
-  },
-  {
-    id: "FOOD-005",
-    name: "Pasta Carbonara",
-    category: "Italian",
-    price: 16.5,
-    description: "Creamy pasta with bacon and parmesan cheese",
-    image: "/placeholder.svg?height=80&width=80",
-  },
-]
+import { db } from "../../../../../Services/Auth/config";
 
-const categories = [
-  "Burgers",
-  "Pizza",
-  "Main Course",
-  "Japanese",
-  "Italian",
-  "Desserts",
-  "Beverages",
-  "Appetizers",
-  "Salads",
-  "Sides",
-]
+interface Food {
+  id: string;
+  name: string;
+  category: string;
+  price: number;
+  image: string;
+  description: string;
+}
 
 export default function FoodsTable() {
-  const [searchQuery, setSearchQuery] = useState("")
-  const [categoryFilter, setCategoryFilter] = useState("all")
+  const [foods, setFoods] = useState<Food[]>([]);
 
-  const filteredFoods = foodItems.filter((food) => {
-    const matchesSearch =
-      food.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      food.description.toLowerCase().includes(searchQuery.toLowerCase())
-    const matchesCategory = categoryFilter === "all" || food.category.toLowerCase() === categoryFilter.toLowerCase()
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "foods"));
+        const foodsArray = querySnapshot.docs.map((doc) => ({
+          foodid: doc.id,
+          ...(doc.data() as Food), // Ensure type safety
+        }));
 
-    return matchesSearch && matchesCategory
-  })
+        console.log("Fetched foodsArray:", foodsArray); // Debugging
+
+        setFoods(foodsArray);
+      } catch (error) {
+        console.error("Error fetching foods:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>
       <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-2">
-          <Input
-            placeholder="Search foods..."
-            className="w-[250px]"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Filter by category" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All Categories</SelectItem>
-              {categories.map((category) => (
-                <SelectItem key={category} value={category.toLowerCase()}>
-                  {category}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
+        <h2 className="text-xl font-semibold">Food Items</h2>
       </div>
       <Table>
         <TableHeader>
@@ -116,48 +50,38 @@ export default function FoodsTable() {
             <TableHead className="w-[80px]">Image</TableHead>
             <TableHead>Name</TableHead>
             <TableHead>Category</TableHead>
-            <TableHead>Description</TableHead>
+           
             <TableHead className="text-right">Price</TableHead>
-            <TableHead className="text-right">Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {filteredFoods.map((food) => (
-            <TableRow key={food.id}>
-              <TableCell>
-                <img
-                  src={food.image || "/placeholder.svg"}
-                  alt={food.name}
-                  className="h-12 w-12 rounded-md object-cover"
-                />
-              </TableCell>
-              <TableCell className="font-medium">{food.name}</TableCell>
-              <TableCell>
-                <Badge variant="outline">{food.category}</Badge>
-              </TableCell>
-              <TableCell className="max-w-[300px] truncate">{food.description}</TableCell>
-              <TableCell className="text-right">${food.price.toFixed(2)}</TableCell>
-              <TableCell className="text-right">
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" size="icon">
-                      <MoreVertical className="h-4 w-4" />
-                      <span className="sr-only">Actions</span>
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end">
-                    <DropdownMenuItem>Edit item</DropdownMenuItem>
-                    <DropdownMenuItem>View details</DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem className="text-red-600">Delete item</DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
+          {foods.length > 0 ? (
+            foods.map((food) => (
+              <TableRow key={food.id}>
+                <TableCell>
+                  <img
+                    src={food.image?.imageUrl  || "/placeholder.png"}
+                    alt={food.name}
+                    className="h-12 w-12 rounded-md object-cover"
+                  />
+                </TableCell>
+                <TableCell className="font-medium">{food.name}</TableCell>
+                <TableCell>
+                  <Badge variant="outline">{food.category}</Badge>
+                </TableCell>
+               
+                <TableCell className="text-right">#{food.price ? food.price.toFixed(2) : "0.00"}</TableCell>
+              </TableRow>
+            ))
+          ) : (
+            <TableRow>
+              <TableCell colSpan={5} className="text-center text-gray-500">
+                No food items available.
               </TableCell>
             </TableRow>
-          ))}
+          )}
         </TableBody>
       </Table>
     </>
-  )
+  );
 }
-

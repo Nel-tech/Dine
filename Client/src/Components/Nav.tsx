@@ -32,9 +32,9 @@ function Nav() {
           Dine
         </a>
 
-        {/* Hamburger Menu for Small Screens */}
+        {/* Hamburger Menu for mobile:all Screens */}
         <div
-          className="cursor-pointer text-2xl xs:block sm:block md:hidden lg:hidden xl:hidden"
+          className="cursor-pointer text-2xl xs:block mobile:block tablet:hidden desktop:hidden wide:hidden"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? (
@@ -46,11 +46,11 @@ function Nav() {
 
         {/* Navigation Links */}
         <section
-          className={`xs:${isOpen ? 'block mx-auto text-center' : 'hidden'} sm:${
+          className={`xs:${isOpen ? 'block mx-auto text-center' : 'hidden'} mobile:${
             isOpen ? 'block mx-auto text-center' : 'hidden' 
-          } flex flex-1 items-center justify-between xs:absolute xs:right-0 xs:top-full xs:w-full xs:h-[50vh] xs:flex-col xs:bg-white xs:pb-6 xs:shadow-lg sm:absolute sm:right-0 sm:top-full sm:w-full sm:h-[50vh] sm:flex-col sm:bg-white sm:pb-6 sm:shadow-lg md:static md:top-0 md:flex md:w-auto md:flex-row md:bg-transparent md:shadow-none`}
+          } flex flex-1 items-center justify-between xs:absolute xs:right-0 xs:top-full xs:w-full xs:h-[50vh] xs:flex-col xs:bg-white xs:pb-6 xs:shadow-lg mobile:absolute mobile:right-0 mobile:top-full mobile:w-full mobile:h-[50vh] mobile:flex-col mobile:bg-white mobile:pb-6 mobile:shadow-lg tablet:static tablet:top-0 tablet:flex tablet:w-auto tablet:flex-row tablet:bg-transparent tablet:shadow-none`}
         >
-          <ul className="flex flex-1 justify-center gap-8 text-[1rem] font-medium text-gray-600 xs:flex-col sm:flex-col md:flex-row">
+          <ul className="flex flex-1 justify-center gap-8 text-[1rem] font-medium text-gray-600 xs:flex-col mobile:flex-col tablet:flex-row">
             <li>
               <Link to="/" className="transition-colors duration-300 hover:text-[#AD343E]" onClick={() => setIsOpen(false)}>
                 Home
@@ -84,7 +84,7 @@ function Nav() {
           </ul>
 
           {/* Conditional Rendering Based on Authentication */}
-          <div className="flex gap-4 xs:flex-col xs:mt-6 sm:mt-6 sm:flex-col md:flex-row">
+          <div className="flex gap-4 xs:flex-col xs:mt-6 mobile:mt-6 mobile:flex-col tablet:flex-row">
             {user ? (
               <>
                 <button

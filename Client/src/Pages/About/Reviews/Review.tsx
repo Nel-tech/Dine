@@ -5,11 +5,11 @@ import Profile3 from '../../../assets/Profile3.jpeg'
 function Review() {
   return (
     <main className="mt-[5rem]">
-      <h1 className="text-center text-[2rem] font-medium sm:text-[1.5rem]">
+      <h1 className="text-center text-[2rem] font-medium mobile:text-[1.5rem]">
         What Our Customer's Say
       </h1>
       <section className="pt-[3rem]">
-        <ul className=" container flex justify-between self-center items-center content-center xs:flex-col sm:flex-col sm:gap-[2rem]">
+        <ul className=" container flex justify-between self-center items-center content-center xs:flex-col mobile:flex-col mobile:gap-[2rem]">
           <li className="bg-[#F9F9F7] w-[20rem] p-[2rem] h-[17rem] rounded-md ">
             <h1 className="text-[#AD343E] font-bold">"The best restaurant"</h1>
             <p className="max-w-[18rem] text-[.8rem] leading-[1.5rem] pt-[1rem]">

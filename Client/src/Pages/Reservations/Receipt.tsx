@@ -130,7 +130,7 @@ export default function Receipt() {
             </CardHeader>
 
             <CardContent className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 tabletgrid-cols-2 gap-4">
                 <div>
                   <h3 className="text-sm font-medium text-gray-500">Customer</h3>
                   <p className="text-sm text-gray-500">{paymentData.email}</p>
@@ -144,7 +144,7 @@ export default function Receipt() {
 
               {cartItems.length > 0 ? (
                 <div>
-                  <h3 className="text-sm font-medium text-gray-500 mb-3">Items</h3>
+                  <h3 className="text-sm: font-medium text-gray-500 mb-3">Items</h3>
                   <div className="space-y-3">
                     {cartItems.map((item) => (
                       <div key={item.Name} className="flex justify-between">

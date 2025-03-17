@@ -8,20 +8,20 @@ function Footer() {
   return (
     <footer className="mt-[7rem]">
       <section className="bg-[#2b2b2b] w-full ">
-        <main className="container text-white flex justify-between items-center pt-[2rem] xs:flex-col sm:flex-col md:flex-col">
-          <ul className='md:pb-[1.8rem]'>
-            <li className='text-[1.5rem] xs:hidden sm:hidden'>DINE</li>
+        <main className="container text-white flex justify-between items-center pt-[2rem] xs:flex-col mobile:flex-col tablet:flex-col">
+          <ul className='tablet:pb-[1.8rem]'>
+            <li className='text-[1.5rem] xs:hidden mobile:hidden'>DINE</li>
           </ul>
 
-          <ul className="flex gap-[2rem] justify-center items-center mx-auto self-center content-center xs:flex-col md:pb-[1.8rem]">
-            <li className='text-[1.5rem] xs:hidden sm:hidden'>Home</li>
+          <ul className="flex gap-[2rem] justify-center items-center mx-auto self-center content-center xs:flex-col tablet:pb-[1.8rem]">
+            <li className='text-[1.5rem] xs:hidden mobile:hidden'>Home</li>
           
-            <li className='text-[1.5rem] xs:hidden sm:hidden'>About</li>
+            <li className='text-[1.5rem] xs:hidden mobile:hidden'>About</li>
 
             
           </ul>
 
-          <ul className="flex gap-[4rem] xs:pb-[2rem] sm:pb-[2.2rem]">
+          <ul className="flex gap-[4rem] xs:pb-[2rem] mobile:pb-[2.2rem]">
             <li>
               <FaXTwitter className='text-[1.6rem]' />
             </li>
@@ -36,7 +36,7 @@ function Footer() {
           </ul>
         </main>
 
-        <hr className='mt-[2rem] container border-[.1px] opacity-30  border-[#DBDFD0] xs:hidden sm:hidden ' />
+        <hr className='mt-[2rem] container border-[.1px] opacity-30  border-[#DBDFD0] xs:hidden mobile:hidden ' />
         <p className='text-white text-center mt-[1rem]'>&copy; {result} Dine Restaurant</p>
       </section>
     </footer>

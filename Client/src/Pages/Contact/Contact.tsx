@@ -1,14 +1,14 @@
-import NavForm from '../../Components/NavForm';
+import Nav from '../../Components/Nav';
 import Footer from '../../Components/Footer';
 function Contact() {
   return (
     <main className="h-[80vh] w-full bg-[#F9F9F7]">
-      <header>
-        <NavForm />
-      </header>
+      {/* <header>
+        <Nav />
+      </header> */}
 
       <section>
-        <NavForm />
+        <Nav />
         <div className="flex min-h-screen flex-col items-center justify-center px-4 py-8 mt-[3rem]">
           <div className="w-full max-w-sm">
             <h2 className="mb-8 text-center text-5xl font-bold text-[#2C2F24]">
@@ -60,7 +60,7 @@ function Contact() {
                 </div>
 
                 <div className="mb-6">
-                  <label className="mb-1 block text-sm font-medium text-gray-800">
+                  <label className="mb-1 block text-sm: font-medium text-gray-800">
                     Message
                   </label>
                   <textarea

@@ -3,30 +3,30 @@
 // import Profile3 from '../assets/Profile3.jpeg';
 
 // Main Dishes
-import JollOfRice from '../assets/FoodImages/JollofRice.jpg'
+import JollOfRice from '../assets/FoodImages/JollofRice.jpg';
 import FriedRice from '../assets/FoodImages/FriedRice.jpg';
-import Rice from '../assets/FoodImages/Rice.png'
+import Rice from '../assets/FoodImages/Rice.png';
 import OfadaRice from '../assets/FoodImages/Ofada Rice.jpg';
-import BeansandPlaintain from '../assets/FoodImages/BeansAndPlaintain.jpeg'
-import YamPorradge from '../assets/FoodImages/YamPorradge.jpeg'
+import BeansandPlaintain from '../assets/FoodImages/BeansAndPlaintain.jpeg';
+import YamPorradge from '../assets/FoodImages/YamPorradge.jpeg';
 
 // Snacks
-import PuffPuff from '../assets/FoodImages/PuffPuff.jpg'
-import EggRoll from '../assets/FoodImages/EggRoll.jpg'
-import FishRoll from '../assets/FoodImages/FishRoll.jpg'
-import MeatPie from '../assets/FoodImages/Meatpie.jpg'
-import ScotchEgg from '../assets/FoodImages/Scotch Egg.jpg'
-import Sausage from '../assets/FoodImages/Sausage.jpeg'
+import PuffPuff from '../assets/FoodImages/PuffPuff.jpg';
+import EggRoll from '../assets/FoodImages/EggRoll.jpg';
+import FishRoll from '../assets/FoodImages/FishRoll.jpg';
+import MeatPie from '../assets/FoodImages/Meatpie.jpg';
+import ScotchEgg from '../assets/FoodImages/Scotch Egg.jpg';
+import Sausage from '../assets/FoodImages/Sausage.jpeg';
 
 // Seafood
-import PepperSoup from '../assets/FoodImages/PepperSoup.jpg'
-import CrabPepperSoup from  '../assets/FoodImages/CrabPepper.jpg'
-import StockFishSoup from '../assets/FoodImages/StockFishStew.jpeg'
-import Asun from '../assets/FoodImages/Asun-meat.png'
+import PepperSoup from '../assets/FoodImages/PepperSoup.jpg';
+import CrabPepperSoup from '../assets/FoodImages/CrabPepper.jpg';
+import StockFishSoup from '../assets/FoodImages/StockFishStew.jpeg';
+import Asun from '../assets/FoodImages/Asun-meat.png';
 
 // Drinks
-import Zobo from '../assets/FoodImages/Zobo.jpg'
-import TigerNut from '../assets/FoodImages/Tigernut.jpeg'
+import Zobo from '../assets/FoodImages/Zobo.jpg';
+import TigerNut from '../assets/FoodImages/Tigernut.jpeg';
 import PalmWine from '../assets/FoodImages/Palm Wine.jpg';
 import Kunu from '../assets/FoodImages/Kunus.jpeg';
 
@@ -57,7 +57,7 @@ import Shrimp from '../assets/FoodImages/Shrimps.jpg';
 //     id: 1,
 //     Title: 'The best restaurant',
 //     Review:
-//       'Last night, we dined at place and were simply blown away. From the moment we stepped in, we were enveloped in an inviting atmosphere and greeted with warm smiles.',
+//       'Last night, we dined at place and were simply blown away. From the moment we stepped in, we were enveloped in an inviting atmosphere and greeted with warm sm:iles.',
 //     Profile: Profile1,
 //     Name: 'Aliyu Miracle',
 //   },
@@ -89,32 +89,32 @@ export const MenuData = [
       {
         Name: 'Jollof Rice',
         BasePrice: 1500,
-        Picture: JollOfRice,
+        image: JollOfRice,
       },
       {
         Name: 'Fried Rice',
         BasePrice: 2000,
-        Picture: FriedRice,
+        image: FriedRice,
       },
       {
         Name: 'Rice',
         BasePrice: 1000,
-        Picture: Rice,
+        image: Rice,
       },
       {
         Name: 'Ofada Rice',
         BasePrice: 1000,
-        Picture: OfadaRice,
+        image: OfadaRice,
       },
       {
         Name: 'Beans and Plantain',
         BasePrice: 3500,
-        Picture: BeansandPlaintain,
+        image: BeansandPlaintain,
       },
       {
         Name: 'Yam Porridge',
         BasePrice: 2000,
-        Picture: YamPorradge,
+        image: YamPorradge,
       },
     ],
   },
@@ -125,32 +125,32 @@ export const MenuData = [
       {
         Name: 'Puff-Puff',
         BasePrice: 500,
-        Picture: PuffPuff,
+        image: PuffPuff,
       },
       {
         Name: 'EggRoll',
         BasePrice: 1500,
-        Picture: EggRoll,
+        image: EggRoll,
       },
       {
         Name: 'FishRoll',
         BasePrice: 1500,
-        Picture: FishRoll,
+        image: FishRoll,
       },
       {
         Name: 'Meat Pie',
         BasePrice: 2000,
-        Picture: MeatPie,
+        image: MeatPie,
       },
       {
         Name: 'Scotch Egg',
         BasePrice: 2000,
-        Picture: ScotchEgg,
+        image: ScotchEgg,
       },
       {
         Name: 'Sausage',
         BasePrice: 800,
-        Picture: Sausage,
+        image: Sausage,
       },
     ],
   },
@@ -161,22 +161,22 @@ export const MenuData = [
       {
         Name: 'Pepper Soup',
         BasePrice: 3000,
-        Picture: PepperSoup,
+        image: PepperSoup,
       },
       {
         Name: 'Crab Pepper Soup',
         BasePrice: 2700,
-        Picture: CrabPepperSoup,
+        image: CrabPepperSoup,
       },
       {
         Name: 'Stockfish Stew',
         BasePrice: 2000,
-        Picture: StockFishSoup,
+        image: StockFishSoup,
       },
       {
         Name: 'Asun-Meat',
         BasePrice: 3000,
-        Picture: Asun,
+        image: Asun,
       },
     ],
   },
@@ -187,22 +187,22 @@ export const MenuData = [
       {
         Name: 'Zobo',
         BasePrice: 500,
-        Picture: Zobo,
+        image: Zobo,
       },
       {
         Name: 'Tiger Nut',
         BasePrice: 500,
-        Picture: TigerNut,
+        image: TigerNut,
       },
       {
         Name: 'Palm Wine',
         BasePrice: 1000,
-        Picture: PalmWine,
+        image: PalmWine,
       },
       {
         Name: 'Kunu',
         BasePrice: 500,
-        Picture: Kunu,
+        image: Kunu,
       },
     ],
   },
@@ -213,32 +213,32 @@ export const MenuData = [
       {
         Name: 'Egusi Soup',
         BasePrice: 2500,
-        Picture: Egusi,
+        image: Egusi,
       },
       {
         Name: 'Ogbono Soup',
         BasePrice: 2500,
-        Picture: Ogbono,
+        image: Ogbono,
       },
       {
         Name: 'Ewedu Soup',
         BasePrice: 2000,
-        Picture: Ewedu,
+        image: Ewedu,
       },
       {
         Name: 'Oha Soup',
         BasePrice: 2000,
-        Picture: Oha,
+        image: Oha,
       },
       {
         Name: 'Banga Soup',
         BasePrice: 2000,
-        Picture: Banga,
+        image: Banga,
       },
       {
         Name: 'Nsala Soup',
         BasePrice: 2000,
-        Picture: Nsala,
+        image: Nsala,
       },
     ],
   },
@@ -249,34 +249,34 @@ export const MenuData = [
       {
         Name: 'Semovita',
         BasePrice: 800,
-        Picture: Semovita,
+        image: Semovita,
       },
       {
         Name: 'Eba',
         BasePrice: 200,
-        Picture: Eba,
+        image: Eba,
       },
       {
         Name: 'Pounded Yam',
         BasePrice: 500,
-        Picture: PoundedYam,
+        image: PoundedYam,
       },
 
       {
         Name: 'Fufu',
         BasePrice: 300,
-        Picture: Fufu,
+        image: Fufu,
       },
 
       {
         Name: 'Tuwo Shinkafa',
         BasePrice: 200,
-        Picture: TuwoShinkafa,
+        image: TuwoShinkafa,
       },
       {
         Name: 'Amala',
         BasePrice: 200,
-        Picture: Amala,
+        image: Amala,
       },
     ],
   },
@@ -288,22 +288,22 @@ export const MenuData = [
       {
         Name: 'Chicken',
         BasePrice: 1000,
-        Picture: FriedChicken,
+        image: FriedChicken,
       },
       {
         Name: 'Fish',
         BasePrice: 1200,
-        Picture: Fish,
+        image: Fish,
       },
       {
         Name: 'Beef',
         BasePrice: 800,
-        Picture: Beef,
+        image: Beef,
       },
       {
         Name: 'Shrimp',
         BasePrice: 800,
-        Picture: Shrimp,
+        image: Shrimp,
       },
     ],
   },

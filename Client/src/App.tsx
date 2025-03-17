@@ -1,26 +1,24 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import './index.css';
-import Home from './Pages/Home/Home';
-import About from './Pages/About/About';
-import SignIn from './Pages/Authentication/SignIn/SignIn';
-import SignUp from './Pages/Authentication/SignUp/SignUp';
-import Menu from './Pages/Menu/Menu';
-import ReservationForm from './Pages/Reservations/ReservationForm';
-import Summary from './Pages/Summary/Summary';
-import Contact from './Pages/Contact/Contact';
-import Receipt from './Pages/Reservations/Receipt';
-import DashBoard from './Pages/Authentication/Admin/DashBoard';
-import ProtectedRoute from './Components/ProtectedRoute';
-import { AuthProvider } from './Context/AuthContext';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { AuthProvider } from "./Context/AuthContext";
+import ProtectedRoute from "./Components/ProtectedRoute";
+import { Toaster } from "sonner"; // Toast notifications
 
-// Import Sonner for toast notifications
-import { Toaster } from 'sonner';
+import "./index.css";
+import Home from "./Pages/Home/Home";
+import About from "./Pages/About/About";
+import SignIn from "./Pages/Authentication/SignIn/SignIn";
+import SignUp from "./Pages/Authentication/SignUp/SignUp";
+import Menu from "./Pages/Menu/Menu";
+import ReservationForm from "./Pages/Reservations/ReservationForm";
+import Summary from "./Pages/Summary/Summary";
+import Contact from "./Pages/Contact/Contact";
+import Receipt from "./Pages/Reservations/Receipt";
+import DashBoard from "./Pages/Authentication/Admin/DashBoard";
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        {/* Toaster component must be placed at the root level */}
+    <Router>
+      <AuthProvider>
         <Toaster position="top-right" richColors />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -65,7 +63,7 @@ function App() {
 
           {/* Protected Admin Route */}
           <Route
-            path="/admin"
+            path="/admin/dashboard"
             element={
               <ProtectedRoute allowedRoles={["admin"]}>
                 <DashBoard />
@@ -73,8 +71,8 @@ function App() {
             }
           />
         </Routes>
-      </Router>
-    </AuthProvider>
+      </AuthProvider>
+    </Router>
   );
 }
 

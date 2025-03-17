@@ -1,21 +1,21 @@
-import { ArrowUpDown } from "lucide-react";
 import { Badge } from "../../../../../Components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../../../../../Components/ui/table";
-import { db } from '../../../../../Services/Auth/config';
-import { doc, getDoc, collection, getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
+import { db } from '../../../../../Services/Auth/config';
+import {doc, getDoc, collection, getDocs } from 'firebase/firestore';
 
 type Payment = {
-  amount: string;
   id: string;
   email: string;
   reference: string;
   customerName: string;
   status: string;
+  amount: number;
+  total: number;
   timestamp?: string;
 };
 
-export default function PaymentsTable() {
+export default function RecentPaymentsTable() {
   const [payments, setPayments] = useState<Payment[]>([]);
   const [, setLoading] = useState(false);
 
@@ -55,17 +55,19 @@ export default function PaymentsTable() {
         }
       }
 
-      return {
-        id: paymentDoc.id,
-        email: paymentData.email || "Unknown",
-        status: paymentData.status || "Unknown",
-        amount: paymentData.amount || "0",
-        customerName: customerName, 
-        reference: paymentData.reference || "N/A",
-        timestamp: paymentData.timestamp?.seconds
-          ? new Date(paymentData.timestamp.seconds * 1000).toLocaleDateString("en-US")
-          : "N/A",
-      };
+     return {
+  id: paymentDoc.id,
+  email: paymentData.email || "Unknown",
+  status: paymentData.status || "Unknown",
+  amount: paymentData.amount || 0,
+  total: paymentData.total || 0, // Ensure total is included
+  customerName: customerName, 
+  reference: paymentData.reference || "N/A",
+  timestamp: paymentData.timestamp?.seconds
+    ? new Date(paymentData.timestamp.seconds * 1000).toLocaleDateString("en-US")
+    : "N/A",
+};
+
     }));
 
     setPayments(allPayments);
@@ -77,16 +79,10 @@ export default function PaymentsTable() {
 };
 
 
-
   useEffect(() => {
     fetchPayments();
 
-    // Auto-refresh every 10 seconds
-    const interval = setInterval(() => {
-      fetchPayments();
-    }, 10000);
-
-    // Cleanup function to stop the interval when the component unmounts
+    const interval = setInterval(fetchPayments, 10000);
     return () => clearInterval(interval);
   }, []);
 
@@ -94,47 +90,25 @@ export default function PaymentsTable() {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[100px]">
-            <div className="flex items-center">
-               ID
-              <ArrowUpDown className="ml-2 h-4 w-4" />
-            </div>
-          </TableHead>
+          <TableHead> ID</TableHead>
           <TableHead>Customer</TableHead>
-          <TableHead>Email</TableHead>
-         
-          <TableHead>
-            <div className="flex items-center">
-              Date
-              <ArrowUpDown className="ml-2 h-4 w-4" />
-            </div>
-          </TableHead>
           <TableHead>Status</TableHead>
           <TableHead className="text-right">Amount</TableHead>
-         
         </TableRow>
       </TableHeader>
       <TableBody>
-        {payments.map((payment) => (
+        {payments.slice(0, 5).map((payment) => (
           <TableRow key={payment.id}>
-            <TableCell className="font-medium">
-              {payment.reference.substring(0, 8)}
-            </TableCell>
+            <TableCell className="font-medium">{payment.id.substring(0,6)}</TableCell>
             <TableCell>{payment.customerName}</TableCell>
-            <TableCell>{payment.email}</TableCell>
-            <TableCell>{payment.timestamp}</TableCell>
             <TableCell>
-              <Badge
-                variant={
-                  payment.status === 'Successful'
-                    ? 'default'
-                    : 'outline'
-                }
-              >
+              <Badge variant={payment.status === 'Successful' ? 'default' : 'outline'}>
                 {payment.status}
               </Badge>
             </TableCell>
-            <TableCell className="text-right">#{payment.amount}</TableCell>
+            <TableCell className="text-right">
+              #{payment.amount.toFixed(2)}
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>

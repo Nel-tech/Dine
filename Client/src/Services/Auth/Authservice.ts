@@ -5,11 +5,10 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth';
-import { auth } from '../Auth/config';
 import { FirebaseError } from 'firebase/app';
 import { sendEmail } from '../../Pages/Email/Email';
 import { getDoc,setDoc,doc } from 'firebase/firestore';
-import { db } from '../Auth/config';
+import { db,auth } from '../Auth/config';
 
 export const signup = async (
   email: string,
@@ -58,49 +57,59 @@ export const signup = async (
 };
 
 
-export const signin = async (
+
+
+
+  export const signin = async (
   email: string,
   password: string
 ): Promise<{ role: string; email: string } | null> => {
   try {
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
-    // Fetch user role from Firestore
-    const userRef = doc(db, 'users', user.uid);
-    const userSnap = await getDoc(userRef);
+    if (!user) {
+      throw new Error("User authentication failed.");
+    }
 
-    if (userSnap.exists()) {
-      const userData = userSnap.data();
-      console.log('User Role:', userData.role);
+    let role = "user"; // Default role
+    let userData = null;
 
-      // If the user is not an admin and tries to access an admin route, log them out
-      if (userData.role === 'admin') {
-        console.log('Admin logged in:', userData.email);
-      } else {
-        console.log('Regular user logged in:', userData.email);
-      }
+    // Check Admin collection
+    const adminRef = doc(db, "Admin", user.uid);
+    const adminSnap = await getDoc(adminRef);
 
-      return {
-        role: userData.role,
-        email: userData.email,
-      };
+    if (adminSnap.exists()) {
+      userData = adminSnap.data();
+      role = "admin";
     } else {
-      throw new Error('User data not found');
+      // Check Users collection
+      const userRef = doc(db, "users", user.uid);
+      const userSnap = await getDoc(userRef);
+
+      if (userSnap.exists()) {
+        userData = userSnap.data();
+        role = "user";
+      } else {
+        console.error("User not found in Firestore.");
+        throw new Error("User data not found.");
+      }
     }
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+    console.log(`User Role: ${role}`);
+
+    return {
+      role,
+      email: userData?.email || email, // Ensure email is always available
+    };
   } catch (error: any) {
-    console.error('Error signing in:', error.message);
+    console.error("Error signing in:", error.message);
 
-    if (error.code === 'auth/invalid-credential') {
-      throw new Error('Invalid email or password.');
+    if (error.code === "auth/invalid-credential") {
+      throw new Error("Invalid email or password.");
     }
 
-    return null;
+    throw error;
   }
 };
 
@@ -111,7 +120,7 @@ export const signout = async (): Promise<void> => {
   try {
     await signOut(auth);
     console.log('User signed out successfully');
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error('Error signing out:', error.message || error);
   }

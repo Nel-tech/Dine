@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useState } from "react"
@@ -7,7 +8,7 @@ import { Card, CardContent } from"../../../../../Components/ui/card"
 import FoodsTable from "./Food-Tab"
 import AddFoodDialog from "./Add-Food"
 
-export default function FoodsManagement() {
+export default function Foodsmanagement() {
   const [isAddFoodOpen, setIsAddFoodOpen] = useState(false)
 
   return (
@@ -33,4 +34,3 @@ export default function FoodsManagement() {
     </div>
   )
 }
-

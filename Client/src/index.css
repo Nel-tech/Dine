@@ -6,13 +6,7 @@
   html {
     font-family: 'Poppins', sans-serif;
   }
-  /* .LogoFont {
-    font-family: "Rubik Doodle Triangles", system-ui;
-  } */
 
-  * {
-    @apply border-border;
-  }
 
   body {
     @apply bg-background text-foreground;

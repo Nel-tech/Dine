@@ -105,15 +105,15 @@ function ReservationForm() {
     <main>
       <NavForm />
       <section className="mx-auto w-full px-4 py-[5rem]">
-        <h1 className="mx-auto text-center text-[2rem] text-[#AD343E] xs:text-[1.2rem] xs:font-semibold sm:text-[1.5rem] sm:font-semibold">
+        <h1 className="mx-auto text-center text-[2rem] text-[#AD343E] xs:text-[1.2rem] xs:font-semibold mobile:text-[1.5rem] mobile:font-semibold">
           Book A Table
         </h1>
-        <p className="mx-auto max-w-[30rem] pb-[.9rem] text-center xs:text-[.9rem] sm:text-[1rem]">
+        <p className="mx-auto max-w-[30rem] pb-[.9rem] text-center xs:text-[.9rem] mobile:text-[1rem]">
           We can’t wait to host you. Reserve your table now and prepare for an
           unforgettable dining experience.
         </p>
 
-        <article className="mx-auto w-[30rem] rounded-lg bg-[#F9F9F7] pb-[4rem] xs:w-[18rem] sm:w-[22rem]">
+        <article className="mx-auto w-[30rem] rounded-lg bg-[#F9F9F7] pb-[4rem] xs:w-[18rem] mobile:w-[22rem]">
           <form className="mx-auto pt-[3rem]" onSubmit={handleForm}>
             {/* Name Input */}
             <div className="mb-6 px-[2rem]">

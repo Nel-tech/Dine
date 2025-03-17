@@ -12,7 +12,7 @@ function Info() {
             about the overall experience. Our staff, renowned for their warmth
             and dedication, strives to make every visit an unforgettable event.
           </p>
-          <div className="flex gap-5 pt-[2rem] xs:flex-col xs:mx-auto sm:gap-3">
+          <div className="flex gap-5 pt-[2rem] xs:flex-col xs:mx-auto mobile:gap-3">
             <div>
               <div className="mb-[1rem] w-[10rem] h-[6rem] bg-white flex flex-col items-center justify-center rounded-md shadow-lg border border-gray-300 hover:bg-gray-100 hover:shadow-xl transition-all duration-200  xs:mx-auto">
                 <h1 className="text-lg font-bold text-gray-800">2</h1>
